@@ -1,0 +1,105 @@
+String: "AAABBB"
+L1: true
+L2: true
+L3: false
+L4: true
+L5: false
+
+String: "AB"
+L1: true
+L2: true
+L3: false
+L4: true
+L5: false
+
+String: ""
+L1: false
+L2: true
+L3: true
+L4: true
+L5: true
+
+String: "ABABABA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "ABAB"
+L1: true
+L2: false
+L3: false
+L4: true
+L5: false
+
+String: "BBAA"
+L1: true
+L2: false
+L3: false
+L4: false
+L5: true
+
+String: "BBBAA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "AAB"
+L1: false
+L2: false
+L3: false
+L4: true
+L5: false
+
+String: "AABBCCD"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "ABCBA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "ABBBA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "ABBA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "ABAABBAAABBB"
+L1: true
+L2: false
+L3: false
+L4: true
+L5: false
+
+String: "AABACABAA"
+L1: false
+L2: false
+L3: false
+L4: false
+L5: false
+
+String: "AABBBAABBB"
+L1: true
+L2: false
+L3: false
+L4: true
+L5: false
+
