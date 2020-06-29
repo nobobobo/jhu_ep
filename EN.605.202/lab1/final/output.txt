@@ -23,10 +23,10 @@ L6: false
 
 String: ""
 L1: false
-L2: true
-L3: true
-L4: true
-L5: true
+L2: false
+L3: false
+L4: false
+L5: false
 L6: false
 
 String: "ABABABA"
@@ -105,7 +105,7 @@ String: "ABAABBAAABBB"
 L1: true
 L2: false
 L3: false
-L4: true
+L4: false
 L5: false
 L6: false
 
@@ -137,7 +137,7 @@ String: "BBBB"
 L1: false
 L2: true
 L3: true
-L4: true
+L4: false
 L5: false
 L6: false
 

@@ -4,7 +4,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * EvalLanguage class
+ */
 public class EvalLanguage {
+    /**
+     * Main method Read the given text and generate new output with the results of
+     * Eval 1-6 language methods
+     * 
+     * @param args
+     * @throws FileNotFoundException
+     */
     public static void main(String args[]) throws FileNotFoundException {
         File text = new File("./LabRegExpRequiredInput.txt");
         File output = new File("./output.txt");
@@ -41,6 +51,16 @@ public class EvalLanguage {
         }
     }
 
+    /**
+     * evalL1
+     * 
+     * read each character from the string, and push each to the corresponding
+     * stack. After reading, popping out the same number of the stack until one of
+     * them is empty, then check both stacks are empty or not
+     * 
+     * @param str
+     * @return
+     */
     public static boolean evalL1(String str) {
         if (str == null || str.length() == 0)
             return false;
@@ -50,20 +70,31 @@ public class EvalLanguage {
 
         for (int i = 0; i < str.length(); i++) {
             char nextCh = str.charAt(i);
-            if (nextCh == 'A') stackA.push(nextCh);
-            if (nextCh == 'B') stackB.push(nextCh);
-            if (nextCh != 'A' && nextCh != 'B') return false;
+            if (nextCh == 'A')
+                stackA.push(nextCh);
+            if (nextCh == 'B')
+                stackB.push(nextCh);
+            if (nextCh != 'A' && nextCh != 'B')
+                return false;
         }
 
-        while (!stackA.isEmpty() && !stackB.isEmpty()){
+        while (!stackA.isEmpty() && !stackB.isEmpty()) {
             stackA.pop();
             stackB.pop();
         }
         return stackA.isEmpty() && stackB.isEmpty();
     }
 
+    /**
+     * evalL2 read characters A's from the string and push to the stack. Once the
+     * read character becomes 'B', start popping at every read. Finally check the
+     * stack is empty or not to evaluate the string is of form AnBn
+     * 
+     * @param str
+     * @return
+     */
     public static boolean evalL2(String str) {
-        if (str == null || str == "")
+        if (str == null || str.length() == 0)
             return false;
 
         int i = 0;
@@ -83,9 +114,20 @@ public class EvalLanguage {
         return i == str.length() && stack.isEmpty();
 
     }
+
+    /**
+     * evalL3
+     * 
+     * read characters A's from the string and push twice to the stack. Once the
+     * read character becomes 'B', start popping at every read. Finally check the
+     * stack is empty or not to evaluate the string is of form AnB2n
+     * 
+     * @param str
+     * @return
+     */
 
     public static boolean evalL3(String str) {
-        if (str == null || str == "")
+        if (str == null || str.length() == 0)
             return false;
 
         int i = 0;
@@ -107,8 +149,19 @@ public class EvalLanguage {
 
     }
 
+    /**
+     * evalL4
+     * 
+     * Read the string from the left and check how many A's and B's are in the
+     * pattern, such as for string ABBABBABBABB it gets n = 1, m = 2 (ABB). Then use
+     * this result to read remaining character, and check the remaining substring
+     * follows this pattern by checking the stack is empty or not.
+     * 
+     * @param str
+     * @return
+     */
     public static boolean evalL4(String str) {
-        if (str == null || str == "")
+        if (str == null || str.length() == 0)
             return false;
 
         int n = 0, m = 0;
@@ -118,6 +171,8 @@ public class EvalLanguage {
 
         while (i < str.length() && isFirstCheck) {
             char nextCh = str.charAt(i);
+            if (stack.isEmpty() && nextCh == 'B')
+                return false;
             if (nextCh != 'A' && nextCh != 'B')
                 return false;
 
@@ -142,14 +197,17 @@ public class EvalLanguage {
             if (str.charAt(i) != 'A' && str.charAt(i) != 'B')
                 return false;
 
-            while (i < str.length() && str.charAt(i) == 'A') {
+            int aEnd = i + n;
+            int bEnd = i + n + m;
+
+            while (i < str.length() && i < aEnd && str.charAt(i) == 'A') {
                 for (int j = 0; j < m; j++) {
                     stack.push(str.charAt(i));
                 }
                 i++;
             }
 
-            while (i < str.length() && str.charAt(i) == 'B') {
+            while (i < str.length() && i < bEnd && str.charAt(i) == 'B') {
                 for (int j = 0; j < n; j++) {
                     if (stack.isEmpty())
                         return false;
@@ -166,8 +224,18 @@ public class EvalLanguage {
 
     }
 
+    /**
+     * evalL5
+     * 
+     * Similar to evalL2, read characters 'B' first and push to the stack. Once all
+     * B's are read and start reading A's, start popping element from the stack.
+     * Then check the stack is empty or not once the string is read.
+     * 
+     * @param str
+     * @return
+     */
     public static boolean evalL5(String str) {
-        if (str == null || str == "")
+        if (str == null || str.length() == 0)
             return false;
 
         int i = 0;
@@ -188,6 +256,18 @@ public class EvalLanguage {
 
     }
 
+    /**
+     * evalL6
+     * 
+     * Similar to evalL1, using three stacks: stackA, stackB, stackC and store each
+     * character from the string Once the all characters from the string are read,
+     * start poppoing the same number of the elements. After one of three stacks is
+     * being empty, check the other two are empty or not to evaluate the same number
+     * of A's, B's and C's are in the string
+     * 
+     * @param str
+     * @return
+     */
     public static boolean evalL6(String str) {
         if (str == null || str.length() == 0)
             return false;
@@ -198,13 +278,17 @@ public class EvalLanguage {
 
         for (int i = 0; i < str.length(); i++) {
             char nextCh = str.charAt(i);
-            if (nextCh == 'A') stackA.push(nextCh);
-            if (nextCh == 'B') stackB.push(nextCh);
-            if (nextCh == 'C') stackC.push(nextCh);
-            if (nextCh != 'A' && nextCh != 'B' && nextCh != 'C') return false;
+            if (nextCh == 'A')
+                stackA.push(nextCh);
+            if (nextCh == 'B')
+                stackB.push(nextCh);
+            if (nextCh == 'C')
+                stackC.push(nextCh);
+            if (nextCh != 'A' && nextCh != 'B' && nextCh != 'C')
+                return false;
         }
 
-        while (!stackA.isEmpty() && !stackB.isEmpty() && !stackC.isEmpty()){
+        while (!stackA.isEmpty() && !stackB.isEmpty() && !stackC.isEmpty()) {
             stackA.pop();
             stackB.pop();
             stackC.pop();
