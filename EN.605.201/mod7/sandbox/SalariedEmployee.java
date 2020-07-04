@@ -58,14 +58,23 @@ public class SalariedEmployee extends Employee {
      * 
      * @param args
      * 
-     *             Expected output: 0: <Not Defined> <Not Defined> <Not Defined>
-     *             <Not Defined> <Not Defined>, <Not Defined> 1/1, 1900 60000 1:
-     *             John Smith 11 Royce St. Boston MA, 02134 6/12, 2017 80000
+     * Expected output: 
+     * 0: <Not Defined> <Not Defined> 
+     * <Not Defined> <Not Defined> <Not Defined>, <Not Defined> 
+     * 1/1, 1900 
+     * 60000 
+     * 
+     * 1: John Smith 
+     * 11 Royce St. Boston MA, 02134 
+     * 6/12, 2017 
+     * 80000
      */
     public static void main(String args[]) {
         SalariedEmployee emp1 = new SalariedEmployee(60000);
 
         System.out.println(emp1.toString());
+
+        System.out.println();
 
         Name name = new Name("John", "Smith");
         Address addr = new Address("11 Royce St.", "Boston", "MA", "02134");
