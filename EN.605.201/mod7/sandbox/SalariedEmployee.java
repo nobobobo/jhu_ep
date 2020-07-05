@@ -2,7 +2,7 @@
  * SalariedEmployee Class
  */
 public class SalariedEmployee extends Employee {
-    private int annualSalary;
+    private double annualSalary;
 
     /**
      * Constructor with annual Salary
@@ -33,7 +33,7 @@ public class SalariedEmployee extends Employee {
      * 
      * @return annualSalary
      */
-    public int getAnnualSalary() {
+    public double getAnnualSalary() {
         return this.annualSalary;
     }
 
@@ -42,7 +42,7 @@ public class SalariedEmployee extends Employee {
      * 
      * @param annualSalary
      */
-    public void setAnnualSalary(int annualSalary) {
+    public void setAnnualSalary(double annualSalary) {
         this.annualSalary = annualSalary;
     }
 
@@ -62,12 +62,12 @@ public class SalariedEmployee extends Employee {
      * 0: <Not Defined> <Not Defined>
      * Address: <Not Defined> <Not Defined> <Not Defined>, <Not Defined>
      * Hire Date: 1/1, 1900
-     * Annual Salary: 60000
+     * Annual Salary: 60000.0
      * 
      * 1: John Smith
      * Address: 11 Royce St. Boston MA, 02134
      * Hire Date: 6/12, 2017
-     * Annual Salary: 80000
+     * Annual Salary: 80000.0
      */
     public static void main(String args[]) {
         SalariedEmployee emp1 = new SalariedEmployee(60000);
