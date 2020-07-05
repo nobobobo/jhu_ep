@@ -41,7 +41,7 @@ public class HourlyEmployee extends Employee {
      * toString method
      */
     public String toString() {
-        return super.toString() + "\n" + getHourlyPay() + "\n" + getHoursWorked() + "\n" + getEarnings();
+        return super.toString() + "\nHourly Pay: " + getHourlyPay() + "\nHours Worked: " + getHoursWorked() + "\nCurrent Earnings: " + getEarnings();
     }
 
     /**
@@ -101,19 +101,19 @@ public class HourlyEmployee extends Employee {
      * 
      * @param args 
      * Expected Output: 
-     * 0: <Not Defined> <Not Defined> 
-     * <Not Defined> <Not Defined> <Not Defined>, <Not Defined> 
-     * 1/1, 1900 
-     * 15.0 
-     * 40
-     * 600.0 (15 * 40 = 600)
+     * 0: <Not Defined> <Not Defined>
+     * Address: <Not Defined> <Not Defined> <Not Defined>, <Not Defined>
+     * Hire Date: 1/1, 1900
+     * Hourly Pay: 15.0
+     * Hours Worked: 40
+     * Current Earnings: 600.0
      * 
-     * 1: John Smith 
-     * 11 Royce St. Boston MA, 02134 
-     * 6/12, 2017 
-     * 15.0 
-     * 50
-     * 1125.0 (15  * 1.5 * 50 = 1125)
+     * 1: John Smith
+     * Address: 11 Royce St. Boston MA, 02134
+     * Hire Date: 6/12, 2017
+     * Hourly Pay: 15.0
+     * Hours Worked: 50
+     * Current Earnings: 1125.0
      */
     public static void main(String args[]) {
         HourlyEmployee emp1 = new HourlyEmployee(15, 40);

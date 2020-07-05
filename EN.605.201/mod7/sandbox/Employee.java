@@ -33,7 +33,7 @@ public class Employee {
      * toString method, using getters
      */
     public String toString() {
-        return getEmployeeNumber() + ": " + getName() + "\n" + getAddress() + "\n" + getHireDate();
+        return getEmployeeNumber() + ": " + getName() + "\nAddress: " + getAddress() + "\nHire Date: " + getHireDate();
     }
 
     /**

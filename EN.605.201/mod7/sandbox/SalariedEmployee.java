@@ -50,7 +50,7 @@ public class SalariedEmployee extends Employee {
      * Salaried Employee toString method
      */
     public String toString() {
-        return super.toString() + "\n" + getAnnualSalary();
+        return super.toString() + "\nAnnual Salary: " + getAnnualSalary();
     }
 
     /**
@@ -59,15 +59,15 @@ public class SalariedEmployee extends Employee {
      * @param args
      * 
      * Expected output: 
-     * 0: <Not Defined> <Not Defined> 
-     * <Not Defined> <Not Defined> <Not Defined>, <Not Defined> 
-     * 1/1, 1900 
-     * 60000 
+     * 0: <Not Defined> <Not Defined>
+     * Address: <Not Defined> <Not Defined> <Not Defined>, <Not Defined>
+     * Hire Date: 1/1, 1900
+     * Annual Salary: 60000
      * 
-     * 1: John Smith 
-     * 11 Royce St. Boston MA, 02134 
-     * 6/12, 2017 
-     * 80000
+     * 1: John Smith
+     * Address: 11 Royce St. Boston MA, 02134
+     * Hire Date: 6/12, 2017
+     * Annual Salary: 80000
      */
     public static void main(String args[]) {
         SalariedEmployee emp1 = new SalariedEmployee(60000);

@@ -1,80 +1,42 @@
-import java.util.Scanner;
-
 /**
  * 
  * Assignment 7 main java class
  */
 public class Assignment7_nhayashi {
     /**
-     * Main method: Prompt the user the number of the employee she/he wants to add
-     * Then calls the promptOnce() function to prompt info After that, print out all
-     * information using toString() for Employee class
+     * Main method: setting up 1 salaried employee and 2 hourly employees and print
+     * out all information using toString() for Employee class
      * 
      * @param args
      */
     public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please enter a number of employees: ");
-        int num = input.nextInt();
-        input.nextLine();
 
-        Employee[] employeeArray = new Employee[num];
+        // Salaried Employee Creation:
+        SalariedEmployee sEmp = new SalariedEmployee(1, new Name("John", "Smith"),
+                new Address("11 Royce St.", "Boston", "MA", "02134"), new Date(1, 1, 2016), 80000);
 
-        for (int i = 0; i < num; i++) {
-            employeeArray[i] = promptOnce();
-        }
+        // Render out the salaried employee info
+        System.out.println();
+        System.out.println("Salaried Employee: ");
+        System.out.println(sEmp.toString());
 
-        for (int i = 0; i < num; i++) {
-            System.out.println(employeeArray[i].toString());
-        }
+        // Hourly Employee 1 creation:
+        HourlyEmployee hEmp1 = new HourlyEmployee(2, new Name("Noboru", "Hayashi"),
+                new Address("1254 Commonwealth Ave.", "Boston", "MA", "02134"), new Date(9, 1, 2016), 15, 20);
+
+        // Render out the hourly employee info
+        System.out.println();
+        System.out.println("Hourly Employee 1:");
+        System.out.println(hEmp1.toString());
+
+        // Hourly Employee 2 creation:
+        HourlyEmployee hEmp2 = new HourlyEmployee(2, new Name("Mary", "Jones"),
+                new Address("275 Babcock St.", "Boston", "MA", "02215"), new Date(1, 1, 2016), 20, 50);
+
+        // Render out the hourly employee 2 info
+        System.out.println();
+        System.out.println("Hourly Employee 2:");
+        System.out.println(hEmp2.toString());
+
     }
-
-    /**
-     * Prompter method Get information for Employee class data type from the user
-     * input
-     * 
-     * @return
-     */
-    public static Employee promptOnce() {
-        Scanner input = new Scanner(System.in);
-
-        // Employee number
-        System.out.println("Employee number: ");
-        int employeeNumber = input.nextInt();
-        input.nextLine();
-
-        // Name
-        System.out.println("Firstname: ");
-        String firstName = input.nextLine();
-        System.out.println("Lastname: ");
-        String lastName = input.nextLine();
-        Name name = new Name(firstName, lastName);
-
-        // Address
-        System.out.println("Street name: ");
-        String street = input.nextLine();
-        System.out.println("City name: ");
-        String city = input.nextLine();
-        System.out.println("State name (2 characters): ");
-        String state = input.nextLine();
-        System.out.println("5-digit Zipcode: ");
-        String zip = input.nextLine();
-        Address addr = new Address(street, city, state, zip);
-
-        // Date
-        System.out.println("Year of Hire (1900-2020): ");
-        int year = input.nextInt();
-        input.nextLine();
-        System.out.println("Month of Hire (1-12): ");
-        int month = input.nextInt();
-        input.nextLine();
-        System.out.println("Day of Hire (1-31): ");
-        int day = input.nextInt();
-        input.nextLine();
-        Date hireDate = new Date(month, day, year);
-
-        // Employee
-        return new Employee(employeeNumber, name, addr, hireDate);
-    }
-
 }
