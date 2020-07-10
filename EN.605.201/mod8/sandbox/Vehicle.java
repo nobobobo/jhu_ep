@@ -1,41 +1,66 @@
-public class Vehicle implements MyInterface{
+/**
+ * Vehicle class
+ */
+public class Vehicle implements MyInterface {
     private String name;
     private int age;
 
+    /**
+     * Constructor
+     */
     Vehicle() {
         this.name = "";
         this.age = 0;
     }
 
+    /**
+     * Name setter
+     */
     public void SetName(String name) {
         this.name = name;
     }
 
+    /**
+     * Age Setter
+     */
     public void SetAge(int age) {
         this.age = age;
     }
 
-    public String getName(){
+    /**
+     * Name Getter
+     */
+    public String getName() {
         return this.name;
     }
 
-    public int getAge(){
+    /**
+     * Age getter
+     */
+    public int getAge() {
         return this.age;
     }
 
-    public void drawObject(){
+    /**
+     * Methods implemented by interface MyInterface:
+     * void drawObject() 
+     * void rotateObject() 
+     * void resizeObject() 
+     * void playSound()
+     */
+    public void drawObject() {
         System.out.println("Drawing a Vehicle");
     }
 
-    public void rotateObject(){
+    public void rotateObject() {
         System.out.println("Rotating a Vehicle");
     }
 
-    public void resizeObject(){
+    public void resizeObject() {
         System.out.println("Resizing a Vehicle");
     }
 
-    public void playSound(){
+    public void playSound() {
         System.out.println("Vehicle Sound");
 
     }

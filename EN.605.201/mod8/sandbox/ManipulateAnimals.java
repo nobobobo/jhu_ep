@@ -1,4 +1,12 @@
 public class ManipulateAnimals {
+
+    /**
+     * main method
+     * @param args
+     * 
+     * creates an array of MyInterface objects storeing two Animal instances and two Vehicle instances.
+     * Iteratively access each instance and run methods polymorphismly
+     */
     public static void main(String args[]){
         MyInterface[] objects = {
             new Animal(), new Vehicle(), new Animal(), new Vehicle()
