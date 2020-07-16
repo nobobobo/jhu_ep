@@ -8,34 +8,26 @@ public class BlackjackGame {
         deck.init();
         deck.shuffle();
 
-        gPlayer.addCard(deck.drawOne());
-        gPlayer.addCard(deck.drawOne());
+        gPlayer.drawCard(deck);
+        gPlayer.drawCard(deck);
 
-        dealerDraws(dealer, deck);
+        dealer.drawCards(deck);
 
-        System.out.println(gPlayer.getName()+ ": "+ gPlayer.getHandPoint());
-        System.out.println(dealer.getName() + ": "+ dealer.getHandPoint());
+        System.out.println(gPlayer.toString());
+        System.out.println(dealer.toString());
 
-        deck.collectUsed(gPlayer.newGame());
-        deck.collectUsed(dealer.newGame());
+        gPlayer.newGame(deck);
+        dealer.newGame(deck);
 
-        gPlayer.addCard(deck.drawOne());
-        gPlayer.addCard(deck.drawOne());
+        gPlayer.drawCard(deck);
+        gPlayer.drawCard(deck);
 
-        dealerDraws(dealer, deck);
+        dealer.drawCards(deck);
 
-        System.out.println(gPlayer.getName()+ ": "+ gPlayer.getHandPoint());
-        System.out.println(dealer.getName() + ": "+ dealer.getHandPoint());
+        System.out.println(gPlayer.toString());
+        System.out.println(dealer.toString());
 
 
     }
-
-    public static void dealerDraws(Dealer dealer, Deck deck){
-        while (dealer.getHandPoint() < 17){
-            dealer.addCard(deck.drawOne());
-        }
-    }
-
-
     
 }

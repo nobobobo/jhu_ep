@@ -18,14 +18,14 @@ public abstract class Player{
         return this.hand;
     }
 
-    public ArrayList<Card> newGame(){
+    public void newGame(Deck deck){
         ArrayList<Card> usedCards = this.hand;
         this.hand = new ArrayList<Card>();
-        return usedCards;
+        deck.collectUsed(usedCards);
     }
 
-    public void addCard(Card card){
-        this.hand.add(card);
+    public void drawCard(Deck deck){
+        this.hand.add(deck.drawOne());
     }
 
     public int getHandPoint(){
@@ -34,5 +34,15 @@ public abstract class Player{
             point += card.getPoint();
         }
         return point;
+    }
+
+    public String toString(){
+        String ret = this.name+"\'s cards: ";
+        for (Card card:this.hand){
+            ret += card.toString() +" ";
+        }
+        ret += "\nHand Point is: " + getHandPoint();
+
+        return ret;
     }
 }

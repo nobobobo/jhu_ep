@@ -4,4 +4,9 @@ public class Dealer extends Player{
         super(name);
     }
 
+    public void drawCards(Deck deck){
+        while (getHandPoint() < 17){
+            drawCard(deck);
+        }
+    }
 }

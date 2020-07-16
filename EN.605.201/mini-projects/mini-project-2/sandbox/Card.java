@@ -22,4 +22,8 @@ public class Card {
             return getNumber();
         }
     }
+
+    public String toString(){
+        return this.suit+ this.number;
+    }
 }
