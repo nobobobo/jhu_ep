@@ -1,19 +1,12 @@
-public class Player{
-    private int money;
+import java.util.ArrayList;
 
-    Player(){
-        this.money = 0;
+public abstract class Player{
+    private String name;
+    private ArrayList<Card> hand;
+
+
+    Player(String name){
+        this.name = name;
+        this.hand = new ArrayList<Card>();
     }
-
-    Player(int money){
-        this.money = money;
-    }
-
-    public void setMoney(int money){
-        this.money = money;
-    }
-
-    public int getMoney(){
-        return this.money;
-    } 
 }
