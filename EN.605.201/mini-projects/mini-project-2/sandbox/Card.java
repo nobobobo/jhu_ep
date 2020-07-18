@@ -1,8 +1,11 @@
+import java.util.Arrays;
+import java.lang.Integer;
+
 public class Card {
     private String suit;
-    private int number;
+    private String number;
 
-    Card(String suit, int number){
+    Card(String suit, String number){
         this.suit = suit;
         this.number = number;
     }
@@ -11,15 +14,17 @@ public class Card {
         return this.suit;
     }
 
-    public int getNumber(){
+    public String getNumber(){
         return this.number;
     }
 
     public int getPoint(){
-        if (getNumber()>= 11){
+        if (Arrays.asList("J","Q","K").contains(getNumber())){
             return 10;
+        } else if (getNumber() == "A"){
+            return 1;
         } else {
-            return getNumber();
+            return Integer.parseInt(getNumber());
         }
     }
 

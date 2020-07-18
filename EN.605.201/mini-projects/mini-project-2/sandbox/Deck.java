@@ -10,12 +10,20 @@ public class Deck {
         this.used = new ArrayList<Card>();
     }
 
+    public ArrayList<Card> getDeck(){
+        return this.deck;
+    }
+
+    public ArrayList<Card> getUsed(){
+        return this.used;
+    }
+
     public void init(){
-        String[] suits = {"S","H","D","C"};
-        int[] numbers = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        String[] suits = {"♠︎","❤︎","♦︎","♣︎"};
+        String[] numbers = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
 
         for (String suit: suits){
-            for (int number: numbers){
+            for (String number: numbers){
                 this.deck.add(new Card(suit, number));
             }
         }

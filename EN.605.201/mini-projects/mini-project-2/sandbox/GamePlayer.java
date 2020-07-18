@@ -8,6 +8,14 @@ public class GamePlayer extends Player{
         this.bet = 0;
     }
 
+    public int getMoney(){
+        return this.money;
+    }
+
+    public int getBet(){
+        return this.bet;
+    }
+
     public void placeBet(int bet){
         this.money -= bet;
         this.bet = bet;
@@ -21,4 +29,10 @@ public class GamePlayer extends Player{
     public void lose(){
         this.bet = 0;
     }
+
+    public void tie(){
+        this.money += this.bet;
+        this.bet = 0;
+    }
+    
 }

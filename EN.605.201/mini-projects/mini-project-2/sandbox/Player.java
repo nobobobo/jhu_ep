@@ -41,7 +41,7 @@ public abstract class Player{
         for (Card card:this.hand){
             ret += card.toString() +" ";
         }
-        ret += "\nHand Point is: " + getHandPoint();
+        ret += "\nHand Point: " + getHandPoint();
 
         return ret;
     }
