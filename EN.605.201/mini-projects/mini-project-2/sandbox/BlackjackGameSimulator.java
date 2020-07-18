@@ -68,7 +68,7 @@ public class BlackjackGameSimulator {
 
         if (gPlayer.getHandPoint() > 21) {
             System.out.println(gPlayer.toString());
-            System.out.println("Burst! Sorry you lose...");
+            System.out.println("Burst!");
             System.out.println();
             gPlayer.lose();
             return;
