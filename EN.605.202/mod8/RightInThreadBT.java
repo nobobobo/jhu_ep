@@ -37,24 +37,48 @@ public class RightInThreadBT {
         pNode.rThread = false;
     }
 
+    public void traverse(){
+        TreeNode node = this.treeArray.get(this.rootPointer);
+        Stack<String> visited = new Stack<String>();
+
+        while (node.rightIdx != -1 || !node.rThread){
+            // if the node is not rThread, check the node is visited or not
+            // if not visited, traverse left child
+            // if visited, visit the current node and traverse right child
+            if (!node.rThread){
+                if (visited.isEmpty() || visited.peek() != node.data){
+                    visited.push(node.data);
+                    node = this.treeArray.get(node.leftIdx);
+                } else {
+                    System.out.print(visited.pop());
+                    node = this.treeArray.get(node.rightIdx);
+                }
+
+            // if the node is rThread, the node is a leaf
+            // so access the data and traverse to the rightIdx(in-order successor)
+            } else {
+                System.out.print(node.data);
+                node = this.treeArray.get(node.rightIdx);
+            }
+        }
+
+        // access last element
+        System.out.println(node.data);
+
+    }
+
     public static void main(String[] args) {
         RightInThreadBT myRightInThreadBT = new RightInThreadBT();
 
         myRightInThreadBT.makeTree("A");
-        System.out.println("Data: " + myRightInThreadBT.treeArray.get(0).data);
-        System.out.println("leftIdx: " + myRightInThreadBT.treeArray.get(0).leftIdx);
-        System.out.println("rightIdx: " + myRightInThreadBT.treeArray.get(0).rightIdx);
-        System.out.println("rThread: " + myRightInThreadBT.treeArray.get(0).rThread);
-        myRightInThreadBT.setLeft("B", 0);
-        System.out.println("Data: " + myRightInThreadBT.treeArray.get(1).data);
-        System.out.println("leftIdx: " + myRightInThreadBT.treeArray.get(1).leftIdx);
-        System.out.println("rightIdx: " + myRightInThreadBT.treeArray.get(1).rightIdx);
-        System.out.println("rThread: " + myRightInThreadBT.treeArray.get(1).rThread);
+        myRightInThreadBT.setLeft("B",0);
         myRightInThreadBT.setRight("C",0);
-        System.out.println("Data: " + myRightInThreadBT.treeArray.get(2).data);
-        System.out.println("leftIdx: " + myRightInThreadBT.treeArray.get(2).leftIdx);
-        System.out.println("rightIdx: " + myRightInThreadBT.treeArray.get(2).rightIdx);
-        System.out.println("rThread: " + myRightInThreadBT.treeArray.get(2).rThread);
+        myRightInThreadBT.setLeft("D",1);
+        myRightInThreadBT.setRight("E",1);
+        myRightInThreadBT.setLeft("F",2);
+        myRightInThreadBT.setRight("G",2);
+
+        myRightInThreadBT.traverse();
     }
 }
 
