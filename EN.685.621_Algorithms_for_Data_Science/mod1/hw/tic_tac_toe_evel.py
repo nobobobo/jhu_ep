@@ -25,6 +25,26 @@ class Board:
 
         return 0
 
+    def eval_pri(self): 
+        ret = 0 
+        
+        pri_x = [[17, 13, 16],
+                 [12, 18, 11],
+                 [15, 10,14]]
+
+        pri_o = [[8, 4, 7]
+                ,[3, 9, 2]
+                ,[6, 1, 5]]
+
+        for i in range(3):
+            for j in range(3): 
+                if self.state[i][j] == 'X':
+                    ret = ret + pri_x[i][j]
+                if self.state[i][j] == 'O':
+                    ret = ret - pri_o[i][j]
+
+        return ret
+
     def eval(self):
         score = 0
 
@@ -40,13 +60,16 @@ class Board:
         score = score + self.eval_line(0, 0, 1, 1, 2, 2)
         score = score + self.eval_line(0, 2, 1, 1, 2, 0)
 
+        # scores of locations based on the priority of board locations
+        score =  2* score + self.eval_pri()
+
         return score 
 
 if __name__ == '__main__':
 
     # pick the first board state as sample
     state = [
-            [['O', 'X', ' '],
+            [['O', ' ', 'X'],
              [' ', 'O', ' '], 
              [' ', ' ', ' ']]
              ,
@@ -66,19 +89,47 @@ if __name__ == '__main__':
              ['X', 'O', ' '], 
              ['O', ' ', ' ']]
              , 
-            [[' ', 'X', 'X'],
+            [[' ', ' ', 'X'],
              [' ', 'O', 'X'], 
              ['O', ' ', 'O']]
              , 
             [[' ', ' ', ' '],
              [' ', 'O', ' '], 
              [' ', ' ', ' ']]
+             ,
+             [[' ', ' ', 'X'],
+             [' ', ' ', ' '], 
+             ['O', ' ', ' ']]
+             ,
+            [['O', ' ', 'X'],
+             [' ', ' ', ' '], 
+             ['O', 'X', 'O']]
+             ,
+            [['O', ' ', ' '],
+             ['X', 'X', ' '], 
+             ['O', ' ', ' ']]
+             ,
+            [['O', ' ', 'X'],
+             ['O', ' ', ' '], 
+             [' ', ' ', ' ']]
+             ,
+            [['O', ' ', ' '],
+             [' ', ' ', ' '], 
+             [' ', ' ', ' ']]
+             , 
+            [['O', ' ', 'X'],
+             [' ', ' ', ' '], 
+             [' ', ' ', 'O']]
+             , 
+            [[' ', ' ', 'O'],
+             [' ', ' ', ' '], 
+             [' ', ' ', ' ']]
              ]
 
     board = Board()
-    for i in range(7):
+    for i in range(14):
    
         board.state = state[i]
-        print(board.eval())
+        print('Board '+ str(i+1)+ ': ' + str(board.eval()))
     # -6 for the first board state
     
