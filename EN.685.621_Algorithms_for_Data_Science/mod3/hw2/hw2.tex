@@ -1,0 +1,197 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{qtree}
+\usepackage{clrscode3e}
+\usepackage{hyperref}
+\usepackage{bigstrut}
+
+\pagestyle{plain}
+
+\usepackage[left=3cm,top=2cm,right=3cm,nohead,nofoot]{geometry}
+
+\begin{document}
+
+\begin{center}
+\bfseries Engineering and Applied Science Programs for Professionals \\
+Whiting School of Engineering \\
+Johns Hopkins University \\
+685.621 Algorithms for Data Science \\
+Homework 2 \\
+Assigned at the start of Module 3 \\
+Due at the end of Module 5
+\end{center}
+
+\begin{center}
+\bfseries Total Points $100/100$
+\end{center}
+
+New collaboration groups will be set up in Blackboard for HW2, Module 4 and 5. Make sure your group starts an individual thread for each collaborative problem and subproblem. You are required to participate in each of the collaborative problem and subproblem. Do not directly post a complete solution. The goal is for the group to develop a solution after everyone has participated. There are both analytical and coding portions of this assignment.\\
+
+
+\textbf{Problems for Grading}
+
+\begin{enumerate}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%% Problem 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textbf{Problem 1}  \\
+    20 Points Total 
+
+    In this problem, implement each of the statistical functions listed in Table~\ref{tab:data_moments} to analyze the Iris data sets by feature and plant class. Please use Table 1 in the Probabilities document under Module 3 content as a reference.
+
+    
+    	\begin{table}[ht]
+		\centering
+		\caption{Data Analysis Statistics}
+			\begin{tabular}{|l|l|} 
+			\hline
+			\bigstrut
+        			\textbf{Test Statistics}    & \textbf{Statistical Function} $\textbf{\textit{F}}(\cdot)$  \\ 
+			\hline \hline
+			\bigstrut
+			Minimum             & $F_{\text{min}}(\textbf{x}) = \text{min}(\textbf{x}) = x_{min}$ \\ 
+			\hline
+			\bigstrut
+			Maximum             & $F_{\text{max}}(\textbf{x}) = \text{max}(\textbf{x}) = x_{max}$ \\ 
+			\hline
+			\bigstrut
+			Mean               		     & $F_{\mu}(\textbf{x}) = \mu(\textbf{x}) = \frac{1}{n} \sum\limits^n_{i=1} x_i$ \\ 
+			\hline
+			\bigstrut
+			Trimmed Mean              & $F_{\mu_t}(\textbf{x}) =  \mu_t(\textbf{x}) = \frac{1}{n - 2p} \sum\limits^{n-p}_{i=p+1} x_i $ \\  
+			\hline
+			\bigstrut
+			Standard Deviation        & $F_{\sigma}(\textbf{x}) =  \sigma(\textbf{x}) = \Big(\frac{1}{n-1} \sum\limits^n_{i=1} \big(x_i - \mu(\textbf{x})\big)^2  \Big)^{1/2}$\\ 
+			\hline
+			\bigstrut
+			Skewness                      & $F_{\gamma}(\textbf{x}) = \gamma (\textbf{x}) = \displaystyle\frac{ \frac{1}{n} \sum\limits^n_{i=1} \big(x_i - \mu(\textbf{x})\big)^3}{\sigma(\textbf{x})^3}$ \\ 
+			\hline
+			\bigstrut
+			Kurtosis                        &  $F_{\kappa}(\textbf{x}) = \kappa (\textbf{x}) = \displaystyle\frac{ \frac{1}{n}  \sum\limits^n_{i=1} \big(x_i - \mu(\textbf{x})\big)^4}{\sigma(\textbf{x})^4}$\\ 
+			\hline
+			\end{tabular}
+			\label{tab:data_moments}
+		\end{table} 
+		
+For clarification, the analysis should be done by feature followed by class of flower type. It should provide insight into the Iris data set. The analysis results should be put into tables for easy understanding. 
+
+The Iris data set is represented by the $[150\times4]$ matrix $\textbf{X}$, $[1\times4]$ vector $\bar{\textbf{X}}$ is the mean of the four features for all observations, $\textbf{x}_1$ is the $[150\times1]$ vector representing the sepal length, $\textbf{x}_2$ is the $[150\times1]$ vector representing the sepal width, $\textbf{x}_3$ is the $[150\times1]$ vector representing the petal length, and $\textbf{x}_4$ is the $[150\times1]$ vector representing the petal width. Taking the notation a step further, let $\textbf{x}_{1,c}$ represents the vector for sepal length by class $c = [1,2,3]$ (Setosa, Versicolor, Virginica), specifically,  $\textbf{x}_{1,1}$ be the $[50\times1]$ vector representing the sepal length for class 1 (Setosa), $\textbf{x}_{1,2}$ be the $[50\times1]$ vector representing the sepal length for class 2 (Versicolor), and $\textbf{x}_{1,3}$ be the $[50\times1]$ vector representing the sepal length for class 3 (Virginica).\\
+		
+    Note: The trimmed mean is a variation of the mean which is calculated by removing values from the beginning and end of a sorted set of data. The average is then taken using the remaining values. This allows any potential outliers to be removed when calculating the statistics of the data. Assuming the data in $\textbf{x}_s = [x_{1,s}, x_{2,s}, \cdots, x_{n,s} ]$ is sorted, the resulting $\textbf{x}_{s,p} =  [x_{1+p,s}, x_{2+p,s}, \cdots, x_{n-p,s} ]$. The trimmed mean allows the removal of extreme values influencing the mean of the data. \\
+
+\pagebreak
+
+    %%%%%%%%%%%%%%%%%%%%%%%%% Problem 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textbf{Problem 2 } \textbf{\emph{Note this is a Collaborative Problem}}\\
+    20 Points Total 
+    
+    In this problem, the Iris data set is to be expanded with synthetic data so that 100 additional observations are generated for each flower class resulting in 300 additional observations. 
+    \begin{enumerate}
+	\item (5 points) Design pseudocode and implement it to generate additional observations from the provided Iris data set. 
+	\item (5 points) Calculate the running time of your pseudocode/code in big-O notation.  
+	\item (5 points) Generate 100 additional observations for each Iris flower class (species). This will result in an additional 300 total observations.  
+	\item (5 points) Plot your data by class (species) in a figure as shown in Figure ~\ref{fig:synthetic_data}. You can choose any two features to show your data, e.g., sepal length vs. petal width.  
+\end{enumerate}
+
+The following is additional information for your benefit.\\
+
+For clarification, take the first 50 observations, the first feature (sepal length) and fourth feature (petal width) shown in red as observed in Figure~\ref{fig:synthetic_data}. The 100 additional observations generated are show in blue. In this example the data has similar covariance matrix, mean, minimum and maximum. The synthetic data was generated using the covariance matrix, mean, minimum and maximum of the data. Random data was generated that contained 100 observations and 4 features. The random data was multiplied by the covariance matrix, set the mean of the original data and the mean of the new data to be the same, and finally normalize the data to fit the original Iris data in terms of minimum and maximum values. \\
+    
+\begin{figure}[htbp]
+	\begin{center}
+    		\subfigure[Synthetic Data (blue) vs Iris Data (red)] {\includegraphics[width=15.2cm]   {synthetic_vs_Iris.jpg}  \label{fig:iris_vs_synthetic}}\\
+    		\hspace{0.3pc}
+    		\subfigure[Distributions]    {\includegraphics[width=15.2cm]   {synthetic_vs_Iris_distributions.jpg} \label{fig:distributions}}\\
+    		\caption{Synthetic Data vs Iris Data (a) shows the synthetic data in blue and the original Iris in red, (b) the distributions of the data are shown for context.}
+    		\label{fig:synthetic_data}
+	\end{center}
+\end{figure}
+
+Recommended method for generating synthetic data:
+
+\begin{enumerate}
+	\item Calculate the covariance ($4 \times 4$), mean ($1 \times 4$), min ($1 \times 4$) and max ($1 \times 4$) for the 50 observations for class $i$ of all features.
+	\item Generate random numbers for the features you are comparing ($100 x 4$). The data range does not matter since you will normalize the random numbers.
+	\item Multiply matrix of random numbers by the covariance matrix of the real data. This process orientates the data on the correct direction and gives the necessary shape as shown in Figure~\ref{fig:synthetic_data}.
+	\item Set the mean of the synthetic data and the original data to be the same. 
+	\item Normalize the synthetic data with the pre calculated mean, min and max.
+\end{enumerate}
+
+This should be done for each class and features of the data. I would define a function that does these steps. Then you can just call it in a loop or one at a time. If you are exporting the images you could wrap the whole process in a function and call it with the real data.
+
+\pagebreak
+
+\pagebreak
+
+        %%%%%%%%%%%%%%%%%%%%%%%%% Problem 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textbf{Problem 3 } \textbf{\emph{Note this is a Collaborative Problem}}\\
+    20 Points Total 
+    
+    In this problem, the goal is to build a set of numerical images from a set of arrays. The following data set from the kaggle website will be used: \href{https://www.kaggle.com/c/digit-recognizer/data}{https://www.kaggle.com/c/digit-recognizer/data}\\
+	This data has a training.csv, test.csv and  sample\_submission.csv files. In this exercise, the focus will be on the train.csv data. The website has the following data description:\\
+	
+	\textit{The data files train.csv and test.csv contain gray-scale images of hand-drawn digits, from zero through nine.}\\
+
+\textit{Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. Each pixel has a single pixel-value associated with it, indicating the lightness or darkness of that pixel, with higher numbers meaning darker. This pixel-value is an integer between 0 and 255, inclusive.}\\
+
+\textit{The training data set, (train.csv), has 785 columns. The first column, called "label", is the digit that was drawn by the user. The rest of the columns contain the pixel-values of the associated image.}\\
+
+\textit{Each pixel column in the training set has a name like pixelx, where x is an integer between 0 and 783, inclusive. To locate this pixel on the image, suppose that we have decomposed x as x = i * 28 + j, where i and j are integers between 0 and 27, inclusive. Then pixel x is located on row i and column j of a 28 x 28 matrix, (indexing by zero).}\\
+
+\textit{or example, pixel 31 indicates the pixel that is in the fourth column from the left, and the second row from the top, as in the ascii-diagram below.}\\
+
+This data is set up in a csv file which will require the reshaping of the data to be a $28 \times 28$ matrix representing images. There are 42,000 images in the train.csv file. For this problem, it is only necessary to process 100 images, 10 each of the numbers from 0 through 9. The goal is to learn how to generate features from images using transforms and first order statistics.   
+
+	\begin{enumerate}
+		\item (5 points) Write code to read in the train.csv file.
+		\item (5 points) Develop, including design and implement, an algorithm to reshape the rows of the data into a matrix of size $28 \times 28$.
+		\item (5 points) What is the running time of the developed algorithms?
+		\item (5 points) Plot the developed matrix for indices 1, 2, 4, 7, 8, 9, 11, 12, 17, and 22.
+	\end{enumerate}
+
+
+\pagebreak
+
+    %%%%%%%%%%%%%%%%%%%%%%%%% Problem 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textbf{Problem 4 } \textbf{\emph{Note this is a Collaborative Problem}}\\
+    40 Points Total
+
+	In this problem, each image is to be processed to generate a set of features using the discrete cosine transform and principal component analysis.  
+
+	\begin{enumerate}
+		\item (7.5 points) Take the 2-dimensional Discrete Cosine Transform of each matrix.  
+		\item (7.5 points) Extract the vertical, horizontal and diagonal coefficients from the transform.  
+		\item (5 points) For each of the three sets of DCT coefficients, perform PCA. 
+		\item (5 Points) Retain either the top $n$ number of principal components or the top  principal components with maximum variance. 
+		\item (7.5 points) Using your top principal components, reduce the DCT transformed data. 
+		\item (7.5 points) Provide analysis on the reduced data, i.e., do these new features appear to separate the 10 classes?  
+	\end{enumerate}
+
+\pagebreak
+
+References
+
+\begin{enumerate} 
+	\item[{[1]}] Bishop, Christopher M., \textit{Neural Networks for pattern Recognition}, Oxford University Press, 1995 
+	\item[{[2]}] Bishop, Christopher M., \textit{Pattern Recognition and Machine Learning}, Springer, 2006, \\
+	https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf
+	\item[{[3]}] Bruce, Peter and Bruce, Andrew, \textit{Practical Statistics for Data Science}, O'Reilly, 2017
+	\item[{[4]}] Cormen, Thomas H., Leiserson, Charles E., Rivest, Ronal L., and Stein, Clifford, \textit{Introduction to Algorithms}, 3rd Edition, MIT Press, 2009
+	\item[{[5]}] Duin, Robert P.W., Tax, David and Pekalska, Elzbieta, \textit{PRTools}, http://prtools.tudelft.nl/
+	\item[{[6]}] Fisher, R. A., \textit{The use of Multiple Measurements in Taxonomic Problems}, Proceedings of Annals of Eugenics, Number 7, pp. 179-188, 1936
+	\item[{[7]}] Franc, Vojtech and Hlavac, Vaclav, \textit{Statistical Pattern Recognition Toolbox}, \newline https://cmp.felk.cvut.cz/cmp/software/stprtool/index.html
+	\item[{[8]}] Fukunaga, Keinosuke, \textit{Introduction to Statistical Pattern Recognition}, Academic Press, 1972 
+	\item[{[9]}] Machine Learning at Waikato University, \textit{WEKA}, https://www.cs.waikato.ac.nz/~ml/index.html
+	\item[{[10]}] Press, William H., Teukolsky, Saul A., Vetterling, William T., and Flannery, Brian P.,  \textit{Numerical Recipes: The Art of Scientific Computing}, Cambridge University Press, Jan 31, 1986
+	\item[{[11]}] Press, William H., Teukolsky, Saul A., Vetterling, William T., and Flannery, Brian P.,  \textit{Numerical Recipes: The Art of Scientific Computing}, 3rd Edition, Cambridge University Press, September 10, 2007
+	\item[{[12]}] Press, William H., Teukolsky, Saul A., Vetterling, William T., and Flannery, Brian P.,  \textit{Numerical Recipes: The Art of Scientific Computing}, 3rd Edition, http://numerical.recipes/
+	\item[{[13]}] Press, William H., \textit{Opinionated Lessons in Statistics}, http://www.opinionatedlessons.org/   
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
