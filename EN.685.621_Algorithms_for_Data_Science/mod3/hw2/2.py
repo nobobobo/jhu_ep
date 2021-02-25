@@ -39,13 +39,6 @@ def normalize(rnd_mat, cov, mean, mn, mx):
 
     return df
 
-def plot_with_real(new_df):
-    df = pd.read_csv('iris.csv')
-
-    colors = np.where(df.species == 'setosa','r',np.where(df.species == 'versicolor','g','b'))
-    plt.scatter(df.sepal_length, df.petal_width, c=colors)
-
-    plt.show()
 
 def plot_eclipse(x, y, x_new, y_new, class_name):
 
