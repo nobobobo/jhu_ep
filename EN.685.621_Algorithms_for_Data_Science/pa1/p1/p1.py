@@ -80,6 +80,52 @@ def mahalanobis_method(class_data):
             continue
     return outlier, md
 
+def feature_ranking(l):
+    setosa = np.array(l[1:51])[:, :4].astype(np.float)
+    versicolor = np.array(l[51:101])[:, :4].astype(np.float)
+    virginica = np.array(l[101:151])[:, :4].astype(np.float)  
+
+    success_rate = [0,0,0,0]
+
+    S1 = np.std(setosa,axis=0)
+    M1 = np.mean(setosa,axis=0)
+    S2 = np.std(versicolor,axis=0)
+    M2 = np.mean(versicolor,axis=0)
+    S3 = np.std(virginica,axis=0)
+    M3 = np.mean(virginica,axis=0)
+
+    for i in range(4):
+        success = 0
+        for j in range(50):
+            d1 = (setosa[j][i] - M1[i]) **2 * S1[i]
+            d2 = (setosa[j][i] - M2[i]) **2 * S2[i]
+            d3 = (setosa[j][i] - M3[i]) **2 * S3[i] 
+            
+            if d1 < d2 and d1 < d3:
+                success += 1
+            
+            d1 = (versicolor[j][i] - M1[i]) **2 * S1[i]
+            d2 = (versicolor[j][i] - M2[i]) **2 * S2[i]
+            d3 = (versicolor[j][i] - M3[i]) **2 * S3[i]  
+
+            if d2 < d1 and d2 < d3:
+                success += 1
+            
+            d1 = (virginica[j][i] - M1[i]) **2 * S1[i]
+            d2 = (virginica[j][i] - M2[i]) **2 * S2[i]
+            d3 = (virginica[j][i] - M3[i]) **2 * S3[i]  
+
+            if d3 < d1 and d3 < d2:
+                success += 1
+        
+        success_rate[i] = success / 150.0
+
+    return success_rate
+           
+
+
+ 
+
 
 if __name__ == '__main__':
     l = read_csv('./iris.csv')
@@ -107,15 +153,20 @@ if __name__ == '__main__':
     # for i in range (n):
     #     print(data[i])
 
-    setosa = np.array(l[1:51])[:, :4].astype(np.float)
-    versicolor = np.array(l[51:101])[:, :4].astype(np.float)
-    virginica = np.array(l[101:151])[:, :4].astype(np.float)    
 
-    outliers_mahal, md = mahalanobis_method(setosa)
-    print(outliers_mahal)
 
-    outliers_mahal, md = mahalanobis_method(versicolor)
-    print(outliers_mahal)
+    # setosa = np.array(l[1:51])[:, :4].astype(np.float)
+    # versicolor = np.array(l[51:101])[:, :4].astype(np.float)
+    # virginica = np.array(l[101:151])[:, :4].astype(np.float)    
 
-    outliers_mahal, md = mahalanobis_method(virginica)
-    print(outliers_mahal)
+    # outliers_mahal, md = mahalanobis_method(setosa)
+    # print(outliers_mahal)
+
+    # outliers_mahal, md = mahalanobis_method(versicolor)
+    # print(outliers_mahal)
+
+    # outliers_mahal, md = mahalanobis_method(virginica)
+    # print(outliers_mahal)
+
+
+    print(feature_ranking(l))
