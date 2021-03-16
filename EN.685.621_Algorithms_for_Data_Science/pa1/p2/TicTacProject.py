@@ -5,15 +5,17 @@ Created on Wed Sep 18 15:56:53 2019
 @author: Samuel Fisher, Intern
 Johns Hopkins University Applied Physics Laboratory
 """
+from checkWin import checkWin2
 import tkinter
 import sys
+# from math import inf as infinity
 #import cv2
-#import PIL.Image, PIL.ImageTk
+# import PIL.Image, PIL.ImageTk
 import random
 sys.setrecursionlimit(2000)#Add limit for recursion
-from checkWin_Incomplete import checkWin
-#from checkWin_Incomplete import checkWin2
-from checkWin_Incomplete import checkWinPos
+from checkWin import checkWin
+from checkWin import checkWin2
+from checkWin import checkWinPos
 game = tkinter.Toplevel()#init board
 game.geometry("350x400+300+300") #set base dimensions
 
@@ -27,17 +29,43 @@ boardCanvas.create_line(114, 90, 114, 280)
 boardCanvas.create_line(173, 90, 173, 280)
 boardCanvas.create_line(50, 153, 240, 153)
 boardCanvas.create_line(50, 215, 240, 215)
-aiSkill = 1 #Change to 0 for no AI, Change to 1 for Easy, Change to 2 for Medium, 3 for Hard
+aiSkill = 3 #Change to 0 for no AI, Change to 1 for Easy, Change to 2 for Medium, 3 for Hard
 # Easy follows optimal move pattern if no places are marked
 # Medium is easy with additional conditional statements
 # Hard uses the MiniMax algorithm
 aiX = 0
-def decisionMaker(boardState,minimax,depth):
-    while True: #Delete this loop if attempting MiniMax
-        c = random.randint(0,8)
-        if boardState[c] == 0:
-            return c
-    #Do MiniMax Here
+def decisionMaker(boardState,depth, player):
+    print('depth:' , depth)
+    print('p:' , player)
+    if checkWin2(boardState) == 1: return [-1, -1]
+    if checkWin2(boardState) == 2: return [-1, 1]
+
+    if player == 0:
+        best = [-1, -100]
+    else:
+        best = [-1, 100]
+
+    if depth == 0:
+        return [-1, 0]
+
+    for i in range(9):
+        if boardState[i] == 0:
+            if player == 0: 
+                boardState[i] == 2
+                score = decisionMaker(boardState, depth-1, 1 - player)    
+                boardState[i] == 0
+                if score[1] > best[1]:
+                    best[0] = i
+                    best[1] = score[1]
+            else: 
+                boardState[i] == 1
+                score = decisionMaker(boardState, depth-1, 1 - player)
+                boardState[i] == 0
+                if score[1] < best[1]:
+                    best[0] = i
+                    best[1] = score[1]
+    return best
+
     
 def getPlace():
     global place
@@ -106,10 +134,14 @@ def AI(aiSkill,place,turn,AIturn):
             midRightPress()
     if aiSkill == 3: #Hard
         G = [] #Create new list G. If G = place, python thinks it is actually place under a different name.
+        depth = 0
         for i in place:
+            if i == 0: depth+=1 
             G.append(i)
 
         F = decisionMaker(G,0,0)
+        print(F)
+        F = F[0]
         if F == 0:
             topLeftPress()
         if F == 1:

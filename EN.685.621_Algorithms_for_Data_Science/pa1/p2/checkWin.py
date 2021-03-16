@@ -88,5 +88,40 @@ def checkWin2(place):
 
 #Check possibilities for wins in the next move
 def checkWinPos(place):
+    # 0-1-2
+    if place[0] == place[1] and place[0] != 0 and place[2] == 0: return 2
+    if place[0] == place[2] and place[0] != 0 and place[1] == 0: return 1
+    if place[1] == place[2] and place[1] != 0 and place[0] == 0: return 0
+
+    # 0-3-6
+    if place[0] == place[3] and place[0] != 0 and place[6] == 0: return 6
+    if place[0] == place[6] and place[0] != 0 and place[3] == 0: return 3
+    if place[3] == place[6] and place[3] != 0 and place[0] == 0: return 0
+
+    # 0-4-9
+    if place[0] == place[4] and place[0] != 0 and place[8] == 0: return 8
+    if place[0] == place[8] and place[0] != 0 and place[4] == 0: return 4
+    if place[4] == place[8] and place[4] != 0 and place[0] == 0: return 0
+
+    # 3-4-5
+    if place[3] == place[4] and place[3] != 0 and place[5] == 0: return 5
+    if place[3] == place[5] and place[3] != 0 and place[4] == 0: return 4
+    if place[4] == place[5] and place[4] != 0 and place[3] == 0: return 3
+
+    # 6-7-8
+    if place[6] == place[7] and place[6] != 0 and place[8] == 0: return 8
+    if place[6] == place[8] and place[6] != 0 and place[7] == 0: return 7
+    if place[7] == place[8] and place[7] != 0 and place[6] == 0: return 6
+
+    # 1-4-7
+    if place[1] == place[4] and place[1] != 0 and place[7] == 0: return 7
+    if place[1] == place[7] and place[1] != 0 and place[4] == 0: return 4
+    if place[4] == place[7] and place[4] != 0 and place[1] == 0: return 1
+
+    # 2-5-8
+    if place[2] == place[5] and place[2] != 0 and place[8] == 0: return 8
+    if place[2] == place[8] and place[2] != 0 and place[5] == 0: return 5
+    if place[5] == place[8] and place[5] != 0 and place[2] == 0: return 2
+
    #Create checkWinPos here
-   return None
+    return None
