@@ -129,7 +129,13 @@ def feature_ranking(l):
 
 if __name__ == '__main__':
     l = read_csv('./iris.csv')
-    # visualize_features(l, 2, 0)
+    visualize_features(l, 0, 1)
+    visualize_features(l, 0, 2)
+    visualize_features(l, 0, 3)
+    visualize_features(l, 1, 2)
+    visualize_features(l, 1, 3)
+    visualize_features(l, 2, 3)
+
 
     # data = l[1:]
     # n = len(data)
@@ -155,18 +161,18 @@ if __name__ == '__main__':
 
 
 
-    # setosa = np.array(l[1:51])[:, :4].astype(np.float)
-    # versicolor = np.array(l[51:101])[:, :4].astype(np.float)
-    # virginica = np.array(l[101:151])[:, :4].astype(np.float)    
+    setosa = np.array(l[1:51])[:, :4].astype(np.float)
+    versicolor = np.array(l[51:101])[:, :4].astype(np.float)
+    virginica = np.array(l[101:151])[:, :4].astype(np.float)    
 
-    # outliers_mahal, md = mahalanobis_method(setosa)
-    # print(outliers_mahal)
+    outliers_mahal, md = mahalanobis_method(setosa)
+    print(outliers_mahal)
 
-    # outliers_mahal, md = mahalanobis_method(versicolor)
-    # print(outliers_mahal)
+    outliers_mahal, md = mahalanobis_method(versicolor)
+    print(outliers_mahal)
 
-    # outliers_mahal, md = mahalanobis_method(virginica)
-    # print(outliers_mahal)
+    outliers_mahal, md = mahalanobis_method(virginica)
+    print(outliers_mahal)
 
 
     print(feature_ranking(l))
