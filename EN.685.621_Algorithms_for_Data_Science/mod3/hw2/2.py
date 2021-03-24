@@ -86,6 +86,8 @@ if __name__ == '__main__':
         new_obs = normalize(rnd_mat, cov, mean, mn, mx)
         new_obs['species'] = classes[i]
 
+        new_obs.to_csv(r'./output.csv', index = False, header=True)
+
         x_new = new_obs.sepal_length
         y_new = new_obs.petal_width
 
