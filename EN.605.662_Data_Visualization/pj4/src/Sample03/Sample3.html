@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Sample2</title>
+<title>Sample3</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13077,7 +13077,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Interactive-Time-Series-Chart">Interactive Time Series Chart<a class="anchor-link" href="#Interactive-Time-Series-Chart">&#182;</a></h1>
+<h1 id="Plot-Pie-Charts-to-Visualize-the-proportion-of-people-have-strokes">Plot Pie Charts to Visualize the proportion of people have strokes<a class="anchor-link" href="#Plot-Pie-Charts-to-Visualize-the-proportion-of-people-have-strokes">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13086,9 +13086,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import packages</span>
-<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import package</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">plotly.subplots</span> <span class="kn">import</span> <span class="n">make_subplots</span>
 </pre></div>
 
     </div>
@@ -13101,8 +13102,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read country_vaccinations.csv </span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;country_vaccinations.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;healthcare-dataset-stroke-data.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13133,25 +13133,22 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 8451 entries, 0 to 8450
-Data columns (total 15 columns):
-country                                8451 non-null object
-iso_code                               8451 non-null object
-date                                   8451 non-null object
-total_vaccinations                     5231 non-null float64
-people_vaccinated                      4688 non-null float64
-people_fully_vaccinated                3186 non-null float64
-daily_vaccinations_raw                 4415 non-null float64
-daily_vaccinations                     8260 non-null float64
-total_vaccinations_per_hundred         5231 non-null float64
-people_vaccinated_per_hundred          4688 non-null float64
-people_fully_vaccinated_per_hundred    3186 non-null float64
-daily_vaccinations_per_million         8260 non-null float64
-vaccines                               8451 non-null object
-source_name                            8451 non-null object
-source_website                         8451 non-null object
-dtypes: float64(9), object(6)
-memory usage: 990.5+ KB
+RangeIndex: 5110 entries, 0 to 5109
+Data columns (total 12 columns):
+id                   5110 non-null int64
+gender               5110 non-null object
+age                  5110 non-null float64
+hypertension         5110 non-null int64
+heart_disease        5110 non-null int64
+ever_married         5110 non-null object
+work_type            5110 non-null object
+Residence_type       5110 non-null object
+avg_glucose_level    5110 non-null float64
+bmi                  4909 non-null float64
+smoking_status       5110 non-null object
+stroke               5110 non-null int64
+dtypes: float64(3), int64(4), object(5)
+memory usage: 479.2+ KB
 </pre>
 </div>
 </div>
@@ -13163,7 +13160,7 @@ memory usage: 990.5+ KB
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>8451 entries, 15 fields.</p>
+<p>5110 entries, 12 fields. Will plot pie charts to show proportion of people had strokes among the group of smoking_status</p>
 
 </div>
 </div>
@@ -13173,10 +13170,7 @@ memory usage: 990.5+ KB
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Time series plot of Vaccinations for countries</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total_vaccinations&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">rangeslider_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">smoking_status</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13189,11 +13183,18 @@ memory usage: 990.5+ KB
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
 
+<div class="output_text output_subarea output_execute_result">
+<pre>never smoked       1892
+Unknown            1544
+formerly smoked     885
+smokes              789
+Name: smoking_status, dtype: int64</pre>
+</div>
 
 </div>
 
@@ -13206,22 +13207,45 @@ memory usage: 990.5+ KB
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add range selectors </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;smoking_status == &#39;never smoked&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">uk</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;smoking_status == &#39;Unknown&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;smoking_status == &#39;formerly smoked&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;smoking_status == &#39;smokes&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">stroke</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">]</span>
+</pre></div>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total_vaccinations&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span>
-    <span class="n">rangeslider_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">rangeselector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
-        <span class="n">buttons</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2w&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">stepmode</span><span class="o">=</span><span class="s2">&quot;backward&quot;</span><span class="p">),</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1m&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="n">stepmode</span><span class="o">=</span><span class="s2">&quot;backward&quot;</span><span class="p">),</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3m&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="n">stepmode</span><span class="o">=</span><span class="s2">&quot;backward&quot;</span><span class="p">),</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;YTD&quot;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">stepmode</span><span class="o">=</span><span class="s2">&quot;todate&quot;</span><span class="p">),</span>
-            <span class="nb">dict</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
-        <span class="p">])</span>
-    <span class="p">)</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">specs</span><span class="o">=</span><span class="p">[[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pie&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pie&quot;</span><span class="p">}],</span>
+           <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pie&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pie&quot;</span><span class="p">}]],</span>
+           <span class="n">subplot_titles</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Never Smoked&quot;</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;Formerly Smoked&quot;</span><span class="p">,</span> <span class="s2">&quot;Smokes&quot;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">ns</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+    <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
-
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">uk</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+    <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+    <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Pie</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">sm</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+    <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title_text</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f Stroke among Smoking Status&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
