@@ -1,0 +1,28 @@
+{
+  "levels": [
+    {
+      "timesteps": [
+        {
+          "time": 0,
+          "file": "b200.gio"
+        }
+      ]
+    },
+    {
+      "timesteps": [
+        {
+          "time": 0,
+          "file": "b1200.gio"
+        }
+      ]
+    },
+    {
+      "timesteps": [
+        {
+          "time": 0,
+          "file": "b5000.gio"
+        }
+      ]
+    }
+  ]
+}

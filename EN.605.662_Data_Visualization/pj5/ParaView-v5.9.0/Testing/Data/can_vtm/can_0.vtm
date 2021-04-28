@@ -1,0 +1,20 @@
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt64">
+  <vtkMultiBlockDataSet>
+    <Block index="0" name="Element Blocks">
+      <DataSet index="0" name="Unnamed block ID: 1" file="can_0/can_0_0_0.vtu"/>
+      <DataSet index="1" name="Unnamed block ID: 2" file="can_0/can_0_1_0.vtu"/>
+    </Block>
+    <Block index="4" name="Side Sets">
+      <DataSet index="0" name="Unnamed set ID: 4"/>
+    </Block>
+    <Block index="7" name="Node Sets">
+      <DataSet index="0" name="Unnamed set ID: 1"/>
+      <DataSet index="1" name="Unnamed set ID: 100"/>
+    </Block>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <DataArray type="Float64" Name="TimeValue" NumberOfTuples="1" format="binary" RangeMin="0" RangeMax="0">
+      CAAAAAAAAAAAAAAAAAAAAA==
+    </DataArray>
+  </FieldData>
+</VTKFile>

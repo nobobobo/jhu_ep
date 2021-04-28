@@ -1,0 +1,40 @@
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt64" compressor="vtkZLibDataCompressor">
+  <vtkMultiBlockDataSet>
+    <Block index="0" name="Mesh">
+      <Piece index="0" name="Zones">
+        <DataSet index="0" file="mb_with_pieces/pvi_Material_Remap2_0005_0_0.vtu"/>
+        <DataSet index="1" file="mb_with_pieces/pvi_Material_Remap2_0005_0_1.vtu"/>
+      </Piece>
+    </Block>
+    <Block index="1" name="Mat">
+      <Piece index="0" name="MatS">
+        <DataSet index="0" file="mb_with_pieces/pvi_Material_Remap2_0005_1_0.vtu"/>
+        <DataSet index="1" file="mb_with_pieces/pvi_Material_Remap2_0005_1_1.vtu"/>
+      </Piece>
+      <Piece index="1" name="MatB">
+        <DataSet index="0" file="mb_with_pieces/pvi_Material_Remap2_0005_2_0.vtu"/>
+        <DataSet index="1" file="mb_with_pieces/pvi_Material_Remap2_0005_2_1.vtu"/>
+      </Piece>
+    </Block>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <Array type="String" Name="title" NumberOfTuples="1" format="binary">
+      AQAAAAAAAAAAgAAAAAAAABQAAAAAAAAAHAAAAAAAAAA=eJwrKMuM900sSS3KTMyJD0rNTSwwYgAAU50HZA==
+    </Array>
+    <Array type="String" Name="version" NumberOfTuples="1" format="binary">
+      AQAAAAAAAAAAgAAAAAAAAA0AAAAAAAAAFQAAAAAAAAA=eJwz1rPQc8wpyEjUMzJkAAAXvgM/
+    </Array>
+    <DataArray type="Int32" Name="cycle_index" NumberOfTuples="1" format="binary" RangeMin="5" RangeMax="5">
+      AQAAAAAAAAAAgAAAAAAAAAQAAAAAAAAADAAAAAAAAAA=eJxjZWBgAAAAGAAG
+    </DataArray>
+    <DataArray type="Float32" Name="simulated_time" NumberOfTuples="1" format="binary" RangeMin="2.4999999848e-09" RangeMax="2.4999999848e-09">
+      AQAAAAAAAAAAgAAAAAAAAAQAAAAAAAAADAAAAAAAAAA=eJwrP6NtCAAEywGg
+    </DataArray>
+    <Array type="String" Name="__CatalystChannel__" NumberOfTuples="1" format="binary">
+      AQAAAAAAAAAAgAAAAAAAAAYAAAAAAAAADgAAAAAAAAA=eJzLzCsoLWEAAAipAjE=
+    </Array>
+    <DataArray type="Float64" Name="TimeValue" NumberOfTuples="1" format="binary" RangeMin="2.5e-09" RangeMax="2.5e-09">
+      AQAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAEAAAAAAAAAA=eJyz6jF41FepagcAD2EDQw==
+    </DataArray>
+  </FieldData>
+</VTKFile>

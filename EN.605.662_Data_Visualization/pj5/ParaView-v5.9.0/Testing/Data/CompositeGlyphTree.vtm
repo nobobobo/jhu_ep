@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <vtkMultiBlockDataSet>
+    <Block index="0">
+      <DataSet index="0" file="CompositeGlyphTree/CompositeGlyphTree_0.vtp">
+      </DataSet>
+      <DataSet index="1" file="CompositeGlyphTree/CompositeGlyphTree_1.vtp">
+      </DataSet>
+    </Block>
+    <Block index="1">
+      <DataSet index="0" file="CompositeGlyphTree/CompositeGlyphTree_2.vtp">
+      </DataSet>
+      <DataSet index="1" file="CompositeGlyphTree/CompositeGlyphTree_3.vtp">
+      </DataSet>
+    </Block>
+    <Block index="2">
+      <DataSet index="0" file="CompositeGlyphTree/CompositeGlyphTree_4.vtp">
+      </DataSet>
+      <DataSet index="1" file="CompositeGlyphTree/CompositeGlyphTree_5.vtp">
+      </DataSet>
+    </Block>
+  </vtkMultiBlockDataSet>
+</VTKFile>

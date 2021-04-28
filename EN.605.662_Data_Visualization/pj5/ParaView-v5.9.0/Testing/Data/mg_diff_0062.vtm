@@ -1,0 +1,39 @@
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt64" compressor="vtkZLibDataCompressor">
+  <vtkMultiBlockDataSet>
+    <Piece index="0">
+      <DataSet index="0" file="mg_diff_0062/mg_diff_0062_0_0.vtu"/>
+      <DataSet index="1" file="mg_diff_0062/mg_diff_0062_0_1.vtu"/>
+      <DataSet index="2" file="mg_diff_0062/mg_diff_0062_0_2.vtu"/>
+      <DataSet index="3" file="mg_diff_0062/mg_diff_0062_0_3.vtu"/>
+      <DataSet index="4" file="mg_diff_0062/mg_diff_0062_0_4.vtu"/>
+      <DataSet index="5" file="mg_diff_0062/mg_diff_0062_0_5.vtu"/>
+      <DataSet index="6" file="mg_diff_0062/mg_diff_0062_0_6.vtu"/>
+      <DataSet index="7" file="mg_diff_0062/mg_diff_0062_0_7.vtu"/>
+      <DataSet index="8" file="mg_diff_0062/mg_diff_0062_0_8.vtu"/>
+      <DataSet index="9" file="mg_diff_0062/mg_diff_0062_0_9.vtu"/>
+      <DataSet index="10" file="mg_diff_0062/mg_diff_0062_0_10.vtu"/>
+      <DataSet index="11" file="mg_diff_0062/mg_diff_0062_0_11.vtu"/>
+      <DataSet index="12" file="mg_diff_0062/mg_diff_0062_0_12.vtu"/>
+      <DataSet index="13" file="mg_diff_0062/mg_diff_0062_0_13.vtu"/>
+      <DataSet index="14" file="mg_diff_0062/mg_diff_0062_0_14.vtu"/>
+      <DataSet index="15" file="mg_diff_0062/mg_diff_0062_0_15.vtu"/>
+    </Piece>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <Array type="String" Name="xrage_version" NumberOfTuples="1" format="binary">
+      AQAAAAAAAAAAgAAAAAAAAAsAAAAAAAAAEwAAAAAAAAA=eJwz1DMyMDAyNI83ZAAADQACHA==
+    </Array>
+    <DataArray type="Int32" Name="cycle_index" NumberOfTuples="1" format="binary" RangeMin="0" RangeMax="0">
+      AQAAAAAAAAAAgAAAAAAAAAQAAAAAAAAADAAAAAAAAAA=eJyzY2BgAAAA/AA/
+    </DataArray>
+    <DataArray type="Float32" Name="simulated_time" NumberOfTuples="1" format="binary" RangeMin="0" RangeMax="0">
+      AQAAAAAAAAAAgAAAAAAAAAQAAAAAAAAADAAAAAAAAAA=eJyb8vKBBQAHBwKW
+    </DataArray>
+    <Array type="String" Name="__CatalystChannel__" NumberOfTuples="1" format="binary">
+      AQAAAAAAAAAAgAAAAAAAAAYAAAAAAAAADgAAAAAAAAA=eJzLzCsoLWEAAAipAjE=
+    </Array>
+    <DataArray type="Float64" Name="T" NumberOfTuples="1" format="binary" RangeMin="0.00010724659762818111" RangeMax="0.00010724659762818111">
+      AQAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAEAAAAAAAAAA=eJx7fbCtxUhWxh4AE/UDYQ==
+    </DataArray>
+  </FieldData>
+</VTKFile>

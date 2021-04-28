@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<GmshMetaFile number_of_partitioned_msh_files="4">
+  <GeometryInfo path="./naca0012/naca_4part_[partID].msh"/>
+  <FieldInfo>
+    <PathList path="./naca0012/domainPressure_t[step]_[partID].msh"/>
+    <PathList path="./naca0012/domainVelocity_t[step]_[partID].msh"/>
+  </FieldInfo>
+  <TimeSteps number_of_steps="1"
+             auto_generate_indices="1"
+             start_index="15"
+             increment_index_by="2"
+             start_value="0."
+             increment_value_by="0.01"/>
+  <AdaptView adaptation_level="2"
+             adaptation_tol="-0.001"/>
+</GmshMetaFile>

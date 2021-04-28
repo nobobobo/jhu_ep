@@ -1,0 +1,10 @@
+YMag,ZMag,FileName
+18,5,wavelet_18_5.pvd
+18,10,wavelet_18_10.pvd
+18,20,wavelet_18_20.pvd
+36,5,wavelet_36_5.pvd
+36,10,wavelet_36_10.pvd
+36,20,wavelet_36_20.pvd
+72,5,wavelet_72_5.pvd
+72,10,wavelet_72_10.pvd
+72,20,wavelet_72_20.pvd

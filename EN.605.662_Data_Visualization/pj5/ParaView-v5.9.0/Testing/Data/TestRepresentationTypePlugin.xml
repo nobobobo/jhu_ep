@@ -1,0 +1,10 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="SphereSpecial" label="Sphere Special" class="vtkSphereSource">
+      <Hints>
+        <RepresentationType view="ComparativeRenderView" type="Wireframe" />
+        <RepresentationType type="Points" />
+      </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

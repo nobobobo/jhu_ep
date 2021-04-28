@@ -1,0 +1,16 @@
+<VTKFile type="vtkMultiBlockDataSet" version="1.0" byte_order="LittleEndian" header_type="UInt64" compressor="vtkZLibDataCompressor">
+  <vtkMultiBlockDataSet>
+    <DataSet index="0" file="FieldDataBlocks/FieldDataBlocks_0_0.vtu">
+    </DataSet>
+    <Block index="1">
+      <Block index="0">
+        <DataSet index="0" file="FieldDataBlocks/FieldDataBlocks_1_0.vti">
+        </DataSet>
+        <DataSet index="1" file="FieldDataBlocks/FieldDataBlocks_2_0.vti">
+        </DataSet>
+      </Block>
+      <DataSet index="1" file="FieldDataBlocks/FieldDataBlocks_3_0.vts">
+      </DataSet>
+    </Block>
+  </vtkMultiBlockDataSet>
+</VTKFile>

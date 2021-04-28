@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<VTKFile type="Table" version="2.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <Table>
+    <Piece NumberOfCols="10"                   NumberOfRows="32"                  >
+      <RowData>
+        <DataArray type="Float32" Name="Normals_X" format="appended" RangeMin="-0.97492790222"       RangeMax="0.97492790222"        offset="0"                   />
+        <DataArray type="Float32" Name="Normals_Y" format="appended" RangeMin="0"                    RangeMax="0.97492790222"        offset="144"                 />
+        <DataArray type="Float32" Name="Normals_Z" format="appended" RangeMin="-1"                   RangeMax="1"                    offset="256"                 />
+        <DataArray type="Float32" Name="Normals_Magnitude" format="appended" RangeMin="0.9999999404"         RangeMax="1"                    offset="332"                 />
+        <DataArray type="Float32" Name="Elevation" format="appended" RangeMin="0.26116269827"        RangeMax="0.79325461388"        offset="388"                 />
+        <DataArray type="Float32" Name="Points_X" format="appended" RangeMin="-0.48746395111"       RangeMax="0.48746395111"        offset="568"                 />
+        <DataArray type="Float32" Name="Points_Y" format="appended" RangeMin="0"                    RangeMax="0.48746395111"        offset="712"                 />
+        <DataArray type="Float32" Name="Points_Z" format="appended" RangeMin="-0.5"                 RangeMax="0.5"                  offset="820"                 />
+        <DataArray type="Float32" Name="Points_Magnitude" format="appended" RangeMin="0.4999999702"         RangeMax="0.5"                  offset="900"                 />
+        <DataArray type="Int64" Name="vtkOriginalIndices" format="appended" RangeMin="0"                    RangeMax="31"                   offset="956"                 />
+      </RowData>
+    </Piece>
+  </Table>
+  <AppendedData encoding="base64">
+   _AQAAAACAAACAAAAAWAAAAA==eJxjYIAAJrV7djJqHvYPplSCMYgNEtMWnWt3oY3XXqzaAIxBbJCYPfdX5efHYlS+LusEYxAbJAaU2wdUsx+oFoxBbJAY0Kx9QDP3A80GYxAbJAYA23Ixhw==AQAAAACAAACAAAAAQAAAAA==eJxjYMAPtEXn2l1o47UXqzYAYxAbJMakds9ORs3D/sGUSjAGsUFiuNTbc5eqPD92R+XrMk5VEAaxQWIAFcoiGQ==AQAAAACAAACAAAAAJQAAAA==eJxjYGiwZ2Bo2P90aZo9+1x5+/Y7yXZAvA/IBonRXBwA4uQ9kQ==AQAAAACAAACAAAAAFgAAAA==eJxjYGiwZyCA//+vx8qmhnoA2i0f1Q==AQAAAACAAACAAAAAcwAAAA==eJzrlNexf3tguR1DtpV9oYqt/a6DxvZ75RTsleXZ7L0vXbVTUXOy3yPkbX9RwdX+aq2hfR6viP0Uj6c41b89oG6/vEnavu4ipz1z7Bu7Tb9O2KnVbbC7LSYKVPvZru3Qfrvemhl2cttb7Ri0uu0Arx4xDg==AQAAAACAAACAAAAAWQAAAA==eJxjYIAAJrU4Oxm1E3YPpvwEYxAbJKYtKmt3oa3XTqx6AxiD2CAxe+5S5efH7ih/XcapAsIgNkgMKLcPqGYfUC0Yg9ggMaBZ+4Bm7gOaDcYgNkgMAItbNHU=AQAAAACAAACAAAAAPwAAAA==eJxjYMAPtEVl7S609dqJVW8AYxAbJMakFmcno3bC7sGUn2AMYoPEcKm35/6q/PxYjMrXZZ1gDGKDxADS2iYJAQAAAACAAACAAAAAKAAAAA==eJxjYGCwZ2Bg2P906TM79rnz7drvPLYF4r1A9j6g2D5aiwMA5CdLcw==AQAAAACAAACAAAAAFwAAAA==eJxjYGCwZyCA////b4eNTQ31AMkUE9E=AQAAAACAAAAAAQAAQAAAAA==eJwtxbUBgwAAADDcrUVa/P8vGUiWBMErdOTYiVNnzl24dOXajVt37j34469HT569+Oe/V2/effj05dsPq4AB8Q==
+  </AppendedData>
+</VTKFile>

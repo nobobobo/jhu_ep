@@ -1,0 +1,8 @@
+<VTKFile type="PImageData" version="1.0" byte_order="LittleEndian" header_type="UInt64">
+  <PImageData WholeExtent="-10 10 -10 10 -10 10" GhostLevel="0" Origin="0 0 0" Spacing="1 1 1">
+    <PPointData Scalars="RTData">
+      <PDataArray type="Float32" Name="RTData"/>
+    </PPointData>
+    <Piece Extent="-10 10 -10 10 -10 10" Source="Wavelet1_000010/Wavelet1_000010_0.vti"/>
+  </PImageData>
+</VTKFile>

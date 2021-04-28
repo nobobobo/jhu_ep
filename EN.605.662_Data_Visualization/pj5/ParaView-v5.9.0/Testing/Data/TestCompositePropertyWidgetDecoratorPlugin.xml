@@ -1,0 +1,77 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="CompositePropertyWidgetDecoratorTestSource" class="vtkSphereSource">
+      <IntVectorProperty name="A"
+        number_of_elements="1"
+        default_values="0">
+        <BooleanDomain name="bool" />
+      </IntVectorProperty>
+      <IntVectorProperty name="B"
+        number_of_elements="1"
+        default_values="0">
+        <BooleanDomain name="bool" />
+      </IntVectorProperty>
+      <IntVectorProperty name="C"
+        number_of_elements="1"
+        default_values="1">
+        <BooleanDomain name="bool" />
+      </IntVectorProperty>
+      <IntVectorProperty name="D"
+        number_of_elements="1"
+        default_values="1">
+        <BooleanDomain name="bool" />
+      </IntVectorProperty>
+      <IntVectorProperty name="E"
+        number_of_elements="1"
+        default_values="1">
+        <BooleanDomain name="bool" />
+      </IntVectorProperty>
+
+      <IntVectorProperty name="Expression1"
+        label="Enabled = { A and [B or (C and D)] } or E"
+        number_of_elements="1"
+        default_values="0">
+        <BooleanDomain name="bool" />
+        <Hints>
+          <PropertyWidgetDecorator type="CompositeDecorator">
+            <Expression type="or">
+              <Expression type="and">
+                <PropertyWidgetDecorator type="GenericDecorator" mode="enabled_state" property="A" value="1" />
+                <Expression type="or">
+                  <PropertyWidgetDecorator type="GenericDecorator" mode="enabled_state" property="B" value="1" />
+                  <Expression type="and">
+                    <PropertyWidgetDecorator type="GenericDecorator" mode="enabled_state" property="C" value="1" />
+                    <PropertyWidgetDecorator type="GenericDecorator" mode="enabled_state" property="D" value="1" />
+                  </Expression>
+                </Expression>
+              </Expression>
+              <PropertyWidgetDecorator type="GenericDecorator" mode="enabled_state" property="E" value="1" />
+            </Expression>
+          </PropertyWidgetDecorator>
+        </Hints>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="Expression2"
+        label="Visibility = A and [B or (C and D)] and E"
+        number_of_elements="1"
+        default_values="0">
+        <BooleanDomain name="bool" />
+        <Hints>
+          <PropertyWidgetDecorator type="CompositeDecorator">
+            <Expression type="and">
+              <PropertyWidgetDecorator type="GenericDecorator" mode="visibility" property="A" value="1" />
+              <Expression type="or">
+                <PropertyWidgetDecorator type="GenericDecorator" mode="visibility" property="B" value="1" />
+                <Expression type="and">
+                  <PropertyWidgetDecorator type="GenericDecorator" mode="visibility" property="C" value="1" />
+                  <PropertyWidgetDecorator type="GenericDecorator" mode="visibility" property="D" value="1" />
+                </Expression>
+              </Expression>
+              <PropertyWidgetDecorator type="GenericDecorator" mode="visibility" property="E" value="1" />
+            </Expression>
+          </PropertyWidgetDecorator>
+        </Hints>
+      </IntVectorProperty>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

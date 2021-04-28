@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<VTKFile type="vtkPartitionedDataSetCollection" version="1.0" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <vtkPartitionedDataSetCollection>
+    <Partitions index="0">
+      <DataSet index="0" file="testxmlpartdscol/testxmlpartdscol_0.vti"/>
+      <DataSet index="1" file="testxmlpartdscol/testxmlpartdscol_1.vti"/>
+    </Partitions>
+    <Partitions index="1">
+      <DataSet index="0" file="testxmlpartdscol/testxmlpartdscol_2.vti"/>
+      <DataSet index="1" file="testxmlpartdscol/testxmlpartdscol_3.vti"/>
+    </Partitions>
+  </vtkPartitionedDataSetCollection>
+</VTKFile>
