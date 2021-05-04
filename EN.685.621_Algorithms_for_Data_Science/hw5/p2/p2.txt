@@ -1,0 +1,66 @@
+0: MIN-MAX-SEARCH is called, player to make action is X. MAX-VALUE is called. Starting from the board state as below: 
+    -----
+    x   o
+    o  
+        x
+    -----
+
+0->1c: MAX-VALUE() searches action space for X (DFS). For each action, call MIN-VALUE(). For simulation, MIN-VALUE() for the board state as below: 
+    board state 1c:
+    -----
+    x   o
+    o x
+        x
+    -----
+
+1c->2b & 2c. MIN-VALUE() is called. DFS to search action space for O. And similary, for each action, max-value() is called
+
+    board state 2b: game does not end. continue  
+    -----
+    x   o
+    o o x
+        x
+    -----
+
+    board state 2c: o wins, the v will be -1 
+    -----
+    x   o
+    o x
+    o   x
+
+2b->3b: X's turn, MAX-VALUE() for each action is called. In figure 3, MAX-VALUE() is called for the board state below: 
+    board state 3b:
+    -----
+    x   o
+    o o x
+    x   x
+    -----
+
+3b->4a & 4b: In figure 3, level 3 to 4 put X's to the board. So X's turn, call MAX-VALUE() for actions below: 
+
+    board state 4a: Continue
+    ----- 
+    x x o 
+    o o x
+    x   x 
+    -----
+
+    board state 4b: X wins, v=1
+    -----
+    x   o
+    o o x
+    x x x
+    -----
+
+4a->5: O's turn, min-value() is called to the only action below: 
+    -----
+    x x o
+    o o x
+    x o x
+    -----
+
+level 5 -> 4a: The game ties, v = 0 and method goes upwards, v for 4a is 0.
+level 4a & 4b -> 3b: max of the values for two action is 1
+level 3b -> 2b: level 2 to 3 was for X's turn, the max value is 1. So v for 2b is 1 
+level 2b & 2c -> 1c: the min of the values for action 2a, 2b is -1. 
+level 1c->0: Since we only simulate only one DFS path, the max value from 5 possible actions is unknown. but we can know the value for the board state 1c is -1, so this action would never picked by AI.
