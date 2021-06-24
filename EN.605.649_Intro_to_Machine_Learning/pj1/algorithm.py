@@ -1,7 +1,14 @@
 import numpy as np
 
-def very_naive_algo(train_data, test_data, output_col, mode='classification'):
+def very_naive_algo(train_data, output_col, mode='classification'):
+    '''
+    Majority Prediction algo, examine the dataset to return the major class or the mean value depends on the mode of the task
 
+    Input: 
+        train_data: 2D list of train_data set
+        output_col: the column index of the class field 
+        mode: mode of the task: 'classification' or 'regression'
+    '''
     outputs = train_data[:, output_col]
 
     if mode=='classification': 
@@ -14,5 +21,5 @@ def very_naive_algo(train_data, test_data, output_col, mode='classification'):
 
 
     if mode=='regression':
-        return [outputs.mean()] * len(test_data)
+        return outputs.mean()
 

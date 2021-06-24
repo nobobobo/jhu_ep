@@ -2,6 +2,11 @@ import csv
 import math
 
 def is_number(s):
+    '''
+    function is check the field can be converted to a number (float) or not
+    Input: 
+        s: input string 
+    '''
     try: 
         float(s)
         return True
@@ -10,6 +15,16 @@ def is_number(s):
 
 def read(file_path, col_headers=[], log_trsfm_cols =[]):
 
+    '''
+    csv reader function with the feature of assigning column headers & specifying columns index to perform log transformation
+    Input: 
+        file_path: path string for the input file
+        col_headers: string list of column names
+        log_trsfm_cols: index list of column index to perform log transformation
+
+    Output: 
+        l: 2D list of data (dim: # of sample x features of the sample)
+    '''
     with open(file_path) as f:
         reader = csv.reader(f)
         l = []
@@ -27,7 +42,6 @@ def read(file_path, col_headers=[], log_trsfm_cols =[]):
 
             l = l + [row]
 
-    
     return l
 
 

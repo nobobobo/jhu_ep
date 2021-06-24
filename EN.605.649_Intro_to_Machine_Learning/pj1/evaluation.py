@@ -1,6 +1,14 @@
 import numpy as np
 
 def evaluation_metric(metric_name, true_val, predicted_val):
+    '''
+    A function to return the metric value given the metric type
+
+    Input: 
+        metric_name: name of the metric. Options: accuracy, mse, precision, recall, F1, mae, r2, pearson
+        true_val: a list of true labels/values
+        predicted_val: a list of predictions
+    '''
     if metric_name == 'accuracy':
         return sum(true_val == predicted_val) / len(predicted_val)
 

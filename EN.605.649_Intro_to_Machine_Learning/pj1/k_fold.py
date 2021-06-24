@@ -3,6 +3,14 @@ from random import sample
 import math
 
 def k_fold(dataset, k=5, with_val_set=False):
+    '''
+    A function to split the dataset into K folds
+
+    Input: 
+        dataset: 2D list of data
+        k: the number of folds
+        with_val_set: a boolean to create validation set or not
+    '''
     size = len(dataset)
     if with_val_set: 
         size = int(0.8 * size)
