@@ -38,15 +38,13 @@ def handle_missing(dataset, missing_label='?', hasColHeader=False):
         mean = 1.0 * sum / (data_len - len(missing_idx))
 
         for idx in missing_idx: 
-            print(dataset[idx])
             dataset[idx][i] = mean
-            print(dataset[idx])
 
 
     return dataset
 
 
-def handle_catergorical_ordinal(dataset, col_idx, category_list):
+def handle_categorical_ordinal(dataset, col_idx, category_list):
     '''
     A function to convert oridinal categorical field to a list
 
@@ -73,6 +71,7 @@ def handle_categorical_nominal(dataset, col_idx, category_list):
     '''
     for i in range(len(dataset)): 
         encode = [0] * len(category_list)
+
         pos = category_list.index(dataset[i][col_idx])
         encode[pos] = 1
         
