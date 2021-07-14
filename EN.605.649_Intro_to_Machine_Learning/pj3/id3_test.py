@@ -38,3 +38,9 @@ print("System entropy {:.4f}".format(tree_clf.entropy))
 # run algorithm id3 to build a tree
 tree_clf.fit()
 tree_clf.printTree()
+
+print('----------')
+print('Test Data: ', X[10])
+print('True Label:', y[10])
+prediction = tree_clf.predict(X[10])
+print('Prediction: ', prediction)

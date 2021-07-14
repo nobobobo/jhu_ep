@@ -10,6 +10,7 @@ class Node:
         self.value = None
         self.next = None
         self.childs = None
+        self.isPruned = False
 
 class Id3Classifier:
 
@@ -139,7 +140,7 @@ class Id3Classifier:
         
         node = self.node
 
-        while node.childs:
+        while not node.isPruned and node.childs:
             best_feature_name = node.value
             best_feature_id = self.feature_names.index(best_feature_name)
             child_value = data[best_feature_id]
