@@ -1,7 +1,5 @@
 import math
 from collections import deque
-
-from pandas.core import base
 import numpy as np
 
 from util.evaluation import evaluation_metric
@@ -15,6 +13,7 @@ class Node:
         self.childs = None
         self.isPruned = False
         self.labelAfterPruned = None
+        self.depth = None
 
 
 class Id3Classifier:
@@ -68,11 +67,12 @@ class Id3Classifier:
         data_ids = [x for x in range(len(self.X))]
         feature_ids = [x for x in range(len(self.feature_names))]
 
-        self.node = self._fit_helper(data_ids, feature_ids, self.node)
+        self.node = self._fit_helper(data_ids, feature_ids, self.node, 0)
 
-    def _fit_helper(self, data_ids, feature_ids, node):
+    def _fit_helper(self, data_ids, feature_ids, node, depth):
         if not node:
             node = Node()
+            node.depth = depth
 
         labels = [self.labels[i] for i in data_ids]
         node.labelAfterPruned = max(set(labels), key=labels.count)
@@ -95,6 +95,7 @@ class Id3Classifier:
 
         for val in feature_vals:
             child = Node()
+            child.depth = node.depth + 1
             child.value = val
             node.childs.append(child)
 
@@ -107,11 +108,11 @@ class Id3Classifier:
                     idx = feature_ids.index(best_feature_id)
                     feature_ids.pop(idx)
                 child.next = self._fit_helper(
-                    child_data_ids, feature_ids, child.next)
+                    child_data_ids, feature_ids, child.next, depth+1)
 
         return node
 
-    def print(self):
+    def print_tree(self):
         print("ID3 Tree: ")
         if not self.node:
             return
@@ -119,17 +120,20 @@ class Id3Classifier:
         nodes.append(self.node)
         while len(nodes) > 0:
             node = nodes.popleft()
+            size = node.depth * 4 + 2
             if node.isPruned:
-                print(node.labelAfterPruned)
+                print(f"{' ' * size} {node.labelAfterPruned}")
             else: 
-                print(node.value)
+                
+                print(f"{' ' * size} -- {node.value}")
                 if node.childs:
                     for child in node.childs:
-                        print('({})'.format(child.value))
+                        print(f"{' ' * (size)} ({child.value})")
                         nodes.append(child.next)
+                    print()
                 elif node.next:
-                    print(node.next)
-
+                    print(f"{' ' * size} {node.next}")
+            
         print()
 
 
@@ -139,15 +143,22 @@ class Id3Classifier:
 
         node = self.node
 
+        tmp = None
         while not node.isPruned and node.childs:
             best_feature_name = node.value
             best_feature_id = self.feature_names.index(best_feature_name)
             child_value = data[best_feature_id]
 
+            tmp = None
             for child in node.childs:
                 if child.value == child_value:
-                    node = child.next
+                    tmp = child.next
 
+            if not tmp: break
+            node = tmp
+
+        
+        if not tmp: return None
         if node.isPruned: return node.labelAfterPruned
         return node.value
 
@@ -155,13 +166,7 @@ class Id3Classifier:
         if not self.node:
             return
 
-        print("Operating Reduced Error Pruning: ")
-        tree_pruned = True
-
-        while tree_pruned:
-            tree_pruned = self._pruning_helper(pruning_data, pruning_labels, self.node)
-
-        print('')
+        self._pruning_helper(pruning_data, pruning_labels, self.node)
 
     def _pruning_helper(self, pruning_data, pruning_labels, node):
         if not node: 
@@ -192,12 +197,13 @@ class Id3Classifier:
                 node.isPruned = False
                 return False
             else: 
-                print('Pruned! Node: ', node.value)
                 return True
 
         ret = False
+        tmp = None
         for child in node.childs:
-            tmp = self._pruning_helper(
+            if child.next.childs:
+                tmp = self._pruning_helper(
                 pruning_data, pruning_labels, child.next)
             if tmp: ret=True
 
