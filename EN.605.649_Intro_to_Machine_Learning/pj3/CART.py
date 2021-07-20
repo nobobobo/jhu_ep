@@ -98,7 +98,11 @@ class CARTRegressorNode:
         best_feature_id = None
         best_feature_val = None
 
-        if mse_base < self.stopping_threshold: return None, None
+        if mse_base < self.stopping_threshold: 
+            print(f'Early Stopped at: {self.split_rule}')
+            print(f'Base MSE: {mse_base}')
+            print(f'Threshold: {self.stopping_threshold}')
+            return None, None
 
         for feature_id in range(len(self.feature_names)):
             feature_vals = list(set([x[feature_id] for x in self.X]))

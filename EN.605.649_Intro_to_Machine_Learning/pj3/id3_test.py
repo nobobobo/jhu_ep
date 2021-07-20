@@ -26,9 +26,9 @@ if __name__ == '__main__':
 
     feature_names = ['Clump Thickness', 'Uniformity of Cell Size', 'Uniformity of Cell Shape', 'Marginal Adhesion', 'Single Epithelial Cell Size', 'Bare Nuclei', 'Bland Chromatin', 'Normal Nucleoli', 'Mitoses']
 
-    # # Car Eval
-    # data = datasets['car']
-    # feature_names = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
+    # Car Eval
+    data = datasets['car']
+    feature_names = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
 
 
     # # Congressional Vote
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     accs = []
     accs_pruned = []
 
-    for i in range(5):
+    for i in range(1):
         test = validation_folds[i]
         test_X = [x[:-1] for x in test]
         test_labels = [x[-1] for x in test]
@@ -66,6 +66,7 @@ if __name__ == '__main__':
 
         model = Id3Classifier(training_X,feature_names,training_labels)
         model.fit()
+        model.print_tree()
 
         predictions = [model.predict(x) for x in test_X]
         acc = evaluation_metric('accuracy', test_labels, predictions)
@@ -75,8 +76,9 @@ if __name__ == '__main__':
         predictions_pruned = [model.predict(x) for x in test_X]
         acc_pruned = evaluation_metric('accuracy', test_labels, predictions_pruned)
         accs_pruned.append(acc_pruned)
+        model.print_tree()
 
-    model.print_tree()
+    # model.print_tree()
 
-    print('Before Pruning: ',round(sum(accs)/5, 4))
-    print('After Pruning: ',round(sum(accs_pruned)/5, 4))
+    # print('Before Pruning: ',round(sum(accs)/5, 4))
+    # print('After Pruning: ',round(sum(accs_pruned)/5, 4))

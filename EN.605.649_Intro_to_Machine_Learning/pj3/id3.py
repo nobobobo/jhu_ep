@@ -291,6 +291,9 @@ class Id3Classifier:
                 node.isPruned = False
                 return False
             else: 
+                print(f'Pruning at node: {node.value}')
+                print(f'accuracy before pruning: {acc_before_pruning}')
+                print(f'accuracy after pruning: {acc_after_pruning}')               
                 return True
 
         ret = False

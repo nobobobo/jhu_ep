@@ -23,40 +23,40 @@ if __name__ == '__main__':
     feature_names = ['Male?', 'Female?', 'Infant?', 'Length', 'Diameter', 'Height', 'Whole weight', 'Shucked weight', 'Viscera weight', 'Shell weight']
 
 
-    # # Computer Hardware
-    # data = datasets['machine']
+    # Computer Hardware
+    data = datasets['machine']
 
-    # col0 = []
-    # col1 = []
-    # for row in data:
-    #     col0.append(row[0])
-    #     col1.append(row[1])
+    col0 = []
+    col1 = []
+    for row in data:
+        col0.append(row[0])
+        col1.append(row[1])
 
-    # col0 = list(set(col0))
-    # col1 = list(set(col1))
+    col0 = list(set(col0))
+    col1 = list(set(col1))
 
-    # feature_names = []
-    # for vendor_name in col0: 
-    #     feature_names.append(f'vendor_name: {vendor_name}')
-    # for model_name in col1:
-    #     feature_names.append(f'model_name: {model_name}')
+    feature_names = []
+    for vendor_name in col0: 
+        feature_names.append(f'vendor_name: {vendor_name}')
+    for model_name in col1:
+        feature_names.append(f'model_name: {model_name}')
     
-    # feature_names = feature_names + ['MYCT', 'MMIN', 'MMAX', 'CACH', 'CHMIN', 'CHMAX', 'PRP']
+    feature_names = feature_names + ['MYCT', 'MMIN', 'MMAX', 'CACH', 'CHMIN', 'CHMAX', 'PRP']
 
-    # data_handler.handle_categorical_nominal(data, 1, col1)
-    # data_handler.handle_categorical_nominal(data, 0, col0)
+    data_handler.handle_categorical_nominal(data, 1, col1)
+    data_handler.handle_categorical_nominal(data, 0, col0)
 
 
-    # forest fires 
-    data = datasets['forestfires'][1:]
+    # # forest fires 
+    # data = datasets['forestfires'][1:]
 
-    col2 = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] 
-    col3 = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+    # col2 = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] 
+    # col3 = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 
-    data_handler.handle_categorical_nominal(data, 3, col3)
-    data_handler.handle_categorical_nominal(data, 2, col2) 
+    # data_handler.handle_categorical_nominal(data, 3, col3)
+    # data_handler.handle_categorical_nominal(data, 2, col2) 
 
-    feature_names = ['X', 'Y'] + col2 + col3 + ['FFMC', 'DMS', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain']
+    # feature_names = ['X', 'Y'] + col2 + col3 + ['FFMC', 'DMS', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain']
 
 
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     tuning_test = tuning_folds[-1]
     tuning_train = tuning_folds[0] + tuning_folds[1] + tuning_folds[2] + tuning_folds[3]  
 
-    thresholds = [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]
+    thresholds = [0, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]
     best_mse = None
     best_threshold = None
     for t in thresholds:
@@ -80,13 +80,9 @@ if __name__ == '__main__':
         model.fit()
         preds = [model.predict(x) for x in tuning_test_X]
         mse = evaluation_metric('mse', tuning_test_y, preds)
-        # print(f'Threshold: {t}, MSE: {mse}')
-        # print(best_mse)
-        if not best_mse:
+        print(f'Threshold: {t}, MSE: {mse}')
+        if not best_mse or mse < best_mse:
             best_mse = mse 
-            best_threshold = t
-        elif mse < best_mse:
-            best_mse = mse
             best_threshold = t
 
     print(f'Best Threshold for Stopping is: {best_threshold}')
