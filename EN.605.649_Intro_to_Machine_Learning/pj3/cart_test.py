@@ -47,16 +47,16 @@ if __name__ == '__main__':
     # data_handler.handle_categorical_nominal(data, 0, col0)
 
 
-    # # forest fires 
-    # data = datasets['forestfires'][1:]
+    # forest fires 
+    data = datasets['forestfires'][1:]
 
-    # col2 = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] 
-    # col3 = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+    col2 = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] 
+    col3 = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 
-    # data_handler.handle_categorical_nominal(data, 3, col3)
-    # data_handler.handle_categorical_nominal(data, 2, col2) 
+    data_handler.handle_categorical_nominal(data, 3, col3)
+    data_handler.handle_categorical_nominal(data, 2, col2) 
 
-    # feature_names = ['X', 'Y'] + col2 + col3 + ['FFMC', 'DMS', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain']
+    feature_names = ['X', 'Y'] + col2 + col3 + ['FFMC', 'DMS', 'DC', 'ISI', 'temp', 'RH', 'wind', 'rain']
 
 
 
@@ -127,6 +127,8 @@ if __name__ == '__main__':
         preds_stopped = [model.predict(x) for x in test_X]
         mse_stopped = evaluation_metric('mse', test_y, preds)
         mses_stopped.append(mse_stopped)
+
+    model.print_tree()
 
     print(f'Unstopped: {round(sum(mses)/5,2)}')
     print(f'Stopped with threshold {best_threshold}: {round(sum(mses_stopped)/5,2)}')

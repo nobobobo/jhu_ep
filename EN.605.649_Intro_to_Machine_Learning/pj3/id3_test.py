@@ -26,19 +26,19 @@ if __name__ == '__main__':
 
     feature_names = ['Clump Thickness', 'Uniformity of Cell Size', 'Uniformity of Cell Shape', 'Marginal Adhesion', 'Single Epithelial Cell Size', 'Bare Nuclei', 'Bland Chromatin', 'Normal Nucleoli', 'Mitoses']
 
-    # Car Eval
-    data = datasets['car']
-    feature_names = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
+    # # Car Eval
+    # data = datasets['car']
+    # feature_names = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
 
 
-    # Congressional Vote
-    data = datasets['house-votes']
-    for i in range(len(data)):
-        cls = data[i][0]
-        data[i].remove(cls)
-        data[i].append(cls)
+    # # Congressional Vote
+    # data = datasets['house-votes']
+    # for i in range(len(data)):
+    #     cls = data[i][0]
+    #     data[i].remove(cls)
+    #     data[i].append(cls)
 
-    feature_names = ['handicapped-infants', 'water-project-cost-sharing', 'adoption-of-the-budget-resolution', 'physician-fee-freeze', 'el-salvador-aid', 'religious-groups-in-schools', 'anti-satellite-test-ban', 'aid-to-nicaraguan-contras', 'mx-missile', 'immigration', 'synfuels-corporation-cutback', 'education-spending', 'superfund-right-to-sue', 'crime', 'duty-free-exports', 'export-administration-act-south-africa']
+    # feature_names = ['handicapped-infants', 'water-project-cost-sharing', 'adoption-of-the-budget-resolution', 'physician-fee-freeze', 'el-salvador-aid', 'religious-groups-in-schools', 'anti-satellite-test-ban', 'aid-to-nicaraguan-contras', 'mx-missile', 'immigration', 'synfuels-corporation-cutback', 'education-spending', 'superfund-right-to-sue', 'crime', 'duty-free-exports', 'export-administration-act-south-africa']
 
 
     folds = k_fold.k_fold(data)
@@ -66,7 +66,6 @@ if __name__ == '__main__':
 
         model = Id3Classifier(training_X,feature_names,training_labels)
         model.fit()
-       #  model.print_tree()
 
         predictions = [model.predict(x) for x in test_X]
         acc = evaluation_metric('accuracy', test_labels, predictions)
@@ -76,6 +75,8 @@ if __name__ == '__main__':
         predictions_pruned = [model.predict(x) for x in test_X]
         acc_pruned = evaluation_metric('accuracy', test_labels, predictions_pruned)
         accs_pruned.append(acc_pruned)
+
+    model.print_tree()
 
     print('Before Pruning: ',round(sum(accs)/5, 4))
     print('After Pruning: ',round(sum(accs_pruned)/5, 4))
